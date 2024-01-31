@@ -62,7 +62,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="geolocation.php" aria-expanded="false">
                 <span>
-                  <i class="ti ti-login"></i>
+                  <i class="ti-location-pin"></i>
                 </span>
                 <span class="hide-menu">Geo Location</span>
               </a>
