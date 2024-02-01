@@ -17,7 +17,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="index.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/index.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-layout-dashboard"></i>
                 </span>
@@ -29,7 +29,7 @@
               <span class="hide-menu">Menu</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="staff.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/staff.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -37,7 +37,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="students.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/students.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-user"></i>
                 </span>
@@ -45,7 +45,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="classes.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/classes.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
@@ -60,7 +60,7 @@
               <span class="hide-menu">Settings</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="geolocation.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/geolocation.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-location-arrow"></i>
                 </span>
@@ -68,7 +68,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="time.php" aria-expanded="false">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/time.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-user-plus"></i>
                 </span>
