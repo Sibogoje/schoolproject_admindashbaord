@@ -36,7 +36,9 @@
                     <input type="text" class="form-control" id="lastName" name="lastName" required>
                 </div>
                  </div>
+                 
                  <div class="form-row">
+
                 <div class="form-group  col-md-6">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -49,7 +51,9 @@
                         <option value="student">Student</option>
                 </div>
                 </div>
+
                 <div class="form-row">
+
                 <div class="form-group col-md-6">
                     <label for="username">Username:</label>
                     <input type="text" class="form-control" id="username" name="username" required>
@@ -58,7 +62,9 @@
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
+
                 </div>
+
                 <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>
 
