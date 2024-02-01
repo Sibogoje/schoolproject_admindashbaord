@@ -37,11 +37,11 @@
                 </div>
                  </div>
                  <div class="form-row">
-                <div class="form-group">
+                <div class="form-group  col-md-6">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group  col-md-6">
                     <label for="email">Role:</label>
                     <select class="form-control" id="role" name="role" required>
                         <option value="admin">Admin</option>
