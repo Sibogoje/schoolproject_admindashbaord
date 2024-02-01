@@ -117,15 +117,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <input type="hidden" id="editId" name="id">
           <div class="form-group">
             <label for="editName">Name</label>
-            <input type="text" class="form-control" id="editName" name="name" required>
+            <input type="text" class="form-control" id="editName" name="editName" required>
           </div>
           <div class="form-group">
             <label for="editEmail">Email</label>
-            <input type="email" class="form-control" id="editEmail" name="email" required>
+            <input type="email" class="form-control" id="editEmail" name="editEmail" required>
           </div>
           <div class="form-group">
             <label for="editRole">Role</label>
-            <input type="text" class="form-control" id="editRole" name="role" required>
+            <input type="text" class="form-control" id="editRole" name="editRole" required>
           </div>
         </form>
       </div>
