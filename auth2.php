@@ -46,14 +46,15 @@
                 <div class="form-group  col-md-6">
                     <label for="role">Role:</label>
                     <select class="form-control" id="role" name="role" required>
+                        <option value="" selected disabled>Select Role</option>
                         <option value="admin">Admin</option>
                         <option value="teacher">Teacher</option>
                         <option value="student">Student</option>
+                    </select>
                 </div>
                 </div>
 
                 <div class="form-row">
-
                 <div class="form-group col-md-6">
                     <label for="username">Username:</label>
                     <input type="text" class="form-control" id="username" name="username" required>
