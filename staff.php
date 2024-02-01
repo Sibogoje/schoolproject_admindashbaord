@@ -49,9 +49,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
-                </div>
             </div>
         </div>
     </div>
