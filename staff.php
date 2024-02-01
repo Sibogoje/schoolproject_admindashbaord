@@ -39,13 +39,46 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
       <!--  Header End -->
       <div class="container-fluid">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Teachers</h5>
-            <p class="mb-0">Teacher's Data</p>
-          </div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold mb-4">Teachers</h5>
+      <p class="mb-0">Teacher's Data</p>
+      
+      <!-- Button to Open Add Staff Member Modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
+        Add New Staff
+      </button>
+
+      <!-- Teachers Table -->
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example Row -->
+          <tr>
+            <th scope="row">1</th>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>Mathematics</td>
+            <td>
+              <button class="btn btn-success btn-sm">Edit</button>
+              <button class="btn btn-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+          <!-- Repeat for each teacher -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
