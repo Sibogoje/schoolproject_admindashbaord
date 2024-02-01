@@ -8,11 +8,27 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                <i class="ti ti-bell-ringing"></i>
-                <div class="notification bg-primary rounded-circle"></div>
-              </a>
-            </li>
+            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="dynamicPageName">
+              <!-- Page name will be set here -->
+            </a>
+             </li>
+             <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  // Assuming URL pattern like "http://example.com/#/page-name" or "http://example.com/page-name"
+                  var urlPath = window.location.pathname || window.location.hash;
+                  // Extract the page name using regex. Adjust the regex pattern based on your URL structure.
+                  var pageName = urlPath.match(/\/([^\/]*?)(\/?|)$/)[1];
+                  // Convert dashes to spaces and capitalize if needed
+                  pageName = pageName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+                  // Check if pageName is empty or not, set a default value if it is
+                  if (!pageName) pageName = "Home"; // Default page name
+                  
+                  // Set the extracted page name to the navigation item
+                  document.getElementById('dynamicPageName').textContent = pageName;
+              });
+              </script>
+
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
