@@ -89,28 +89,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   </div>
 
 
-  <script>
-function addStaffMember() {
-  // Example function to handle adding a staff member
-  // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
-  console.log('Adding staff member...');
-  
-  $.ajax({
-    type: "POST",
-    url: "scripts/add_staff.php",
-    data: $("#addStaffForm").serialize(),
-    success: function(response) {
-      // Handle success (e.g., close modal, refresh table)
-      $('#addStaffModal').modal('hide');
-      alert(message);
-    },
-    error: function(response) {
-      alert(message);
-    }
-  });
-}
-</script>
-
  <!-- Add Staff Member Modal -->
  <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -152,6 +130,32 @@ function addStaffMember() {
     </div>
   </div>
 </div>
+
+
+
+  <script>
+function addStaffMember() {
+  // Example function to handle adding a staff member
+  // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
+  console.log('Adding staff member...');
+  
+  $.ajax({
+    type: "POST",
+    url: "scripts/add_staff.php",
+    data: $("#addStaffForm").serialize(),
+    success: function(response) {
+      // Handle success (e.g., close modal, refresh table)
+      $('#addStaffModal').modal('hide');
+      alert(message);
+    },
+    error: function(response) {
+      alert(message);
+    }
+  });
+}
+</script>
+
+
 
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
