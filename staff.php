@@ -22,6 +22,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <title>Student Attendance</title>
   <link rel="shortcut icon" type="image/png" href="logo.png" />
   <link rel="stylesheet" href="assets/css/styles.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
@@ -73,7 +74,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <td>Today</td>
             <td>
               <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+              <button class="btn btn-danger btn-sm"> <i class="material-icons">delete</i></i></button>
             </td>
           </tr>
           <!-- Repeat for each teacher -->
