@@ -15,8 +15,11 @@ if (!empty($username) && !empty($password)) {
     
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password_hash'])) {
+        if (password_verify($password, $row['password_hash'])) {            
+            //set logged in session
+            $_SESSION['logged_in'] = true;
             $_SESSION['user_id'] = $row['admin_id'];
+            $_SESSION['username'] = $row['username'];
             // Set any other session variables you need
             $response['status'] = 'success';
             $response['message'] = 'Login successful';

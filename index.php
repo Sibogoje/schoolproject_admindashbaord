@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+// Check if the user is logged in, using a session variable (e.g., $_SESSION['loggedin'])
+// This assumes you set this session variable at login
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    // Clear any existing session data
+    $_SESSION = array();
+    session_destroy();
+    
+    // Redirect to login page
+    header("Location: logout.php"); // Assume 'logout.php' handles redirection to the login page and clearing sessions
+    exit;
+}
+?>
+<!doctype html>
+
+
+
 <!doctype html>
 <html lang="en">
 
