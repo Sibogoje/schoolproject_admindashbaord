@@ -26,28 +26,31 @@
                 </a>
                
                 <form action="register.php" method="post" id="registrationForm">
-        <div class="form-group">
+    <div class="form-row">
+        <div class="form-group col-md-6">
             <label for="firstName">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" required>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label for="lastName">Last Name:</label>
             <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+</form>
+
 
               </div>
             </div>
@@ -67,12 +70,12 @@
 
         $.ajax({
           type: "POST",
-          url: "scripts/login.php", // The PHP file that processes the login logic.
+          url: "scripts/register.php", // The PHP file that processes the login logic.
           data: $(this).serialize(), // Serializes the form's elements.
           success: function(data) {
             if(data.status == 'success') {
               // Redirect to a logged-in page or update UI accordingly.
-              window.location.href = 'dashboard.php';
+              window.location.href = '../auth.php';
             } else {
               // Show an error message
               alert(data.message);
