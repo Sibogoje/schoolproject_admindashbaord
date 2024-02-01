@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if ($stmt->execute()) {
         $response['status'] = 'success';
-        $response['message'] = 'Registration successful';
+        $response['message'] = 'Registration Successful';
     } else {
-        $response['message'] = 'Registration failed';
+        $response['message'] = 'Registration Failed';
 
     }
     $stmt->close();
