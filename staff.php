@@ -218,7 +218,7 @@ $(document).ready(function() {
                 data: { id: id },
                 dataType: "json",
                 success: function(response) {
-                    var jsonData = JSON.parse(response);
+                   // var jsonData = JSON.parse(response);
                     if (jsonData.status === 'success') {
                       alert(response.message);
                         location.reload(); // Reload the page to see the changes
