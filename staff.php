@@ -83,7 +83,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echo "<td>";
           echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
 
-          echo "<button class='btn btn-danger btn-sm' onclick='deleteStaff(" . $row['id'] . ")'> <i class='material-icons'>delete</i></button>";
+          echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+
           echo "</td>";
           echo "</tr>";
       }
@@ -202,6 +203,35 @@ $(document).ready(function(){
     $('#editEmail').val(email);
     $('#editRole').val(role);
   });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('.deleteBtn').click(function() {
+        var id = $(this).data('id');
+        if(confirm('Are you sure you want to delete this staff member?')) {
+            $.ajax({
+                type: "POST",
+                url: "scripts/delete_staff.php", // Path to your delete script
+                data: { id: id },
+                dataType: "json",
+                success: function(response) {
+                    var jsonData = JSON.parse(response);
+                    if (jsonData.status === 'success') {
+                      alert(response.message);
+                        location.reload(); // Reload the page to see the changes
+                    } else {
+                      alert(response.message);
+                    }
+                },
+                error: function() {
+                  alert(response.message);
+                }
+            });
+        }
+    });
 });
 </script>
 
