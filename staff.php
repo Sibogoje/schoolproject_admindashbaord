@@ -71,8 +71,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <td>Mathematics</td>
             <td>Today</td>
             <td>
-              <button class="btn btn-success btn-sm">Edit</button>
-              <button class="btn btn-danger btn-sm">Delete</button>
+              <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
+              <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
             </td>
           </tr>
           <!-- Repeat for each teacher -->
@@ -106,7 +106,6 @@ function addStaffMember() {
       // Handle error
     }
   });
-  */
 }
 </script>
 
