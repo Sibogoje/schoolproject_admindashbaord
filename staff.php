@@ -148,6 +148,9 @@ function addStaffMember() {
       // Handle success (e.g., close modal, refresh table)
       $('#addStaffModal').modal('hide');
       alert(response.message);
+      //reload the page
+      location.reload();
+
     },
     error: function() {
       alert(response.message);
