@@ -65,20 +65,32 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           </tr>
         </thead>
         <tbody>
-          <!-- Example Row -->
-          <tr>
-            <th scope="row">1</th>
-            <td>John Doe</td>
-            <td>johndoe@example.com</td>
-            <td>Mathematics</td>
-            <td>Today</td>
-            <td>
-              <button class="btn btn-success btn-sm"> <i class="material-icons">edit</i></button>
-              <button class="btn btn-danger btn-sm"> <i class="material-icons">delete</i></button>
-            </td>
-          </tr>
-          <!-- Repeat for each teacher -->
-        </tbody>
+  <?php
+  // Query to select all staff members
+  $query = "SELECT id, name, email, role, last_login FROM staff ORDER BY name ASC";
+  $result = $conn->query($query);
+
+  if ($result->num_rows > 0) {
+      // Output data of each row
+      while($row = $result->fetch_assoc()) {
+          echo "<tr>";
+          echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
+          echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['role']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['last_login']) . "</td>";
+          echo "<td>";
+          echo "<button class='btn btn-success btn-sm' onclick='editStaff(" . $row['id'] . ")'> <i class='material-icons'>edit</i></button> ";
+          echo "<button class='btn btn-danger btn-sm' onclick='deleteStaff(" . $row['id'] . ")'> <i class='material-icons'>delete</i></button>";
+          echo "</td>";
+          echo "</tr>";
+      }
+  } else {
+      echo "<tr><td colspan='6'>No staff found</td></tr>";
+  }
+  ?>
+</tbody>
+
       </table>
       </div>
     </div>
