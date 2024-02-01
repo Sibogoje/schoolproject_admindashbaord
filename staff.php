@@ -41,13 +41,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Teachers</h5>
-      <p class="mb-0">Teacher's Data</p>
-      
-      <!-- Button to Open Add Staff Member Modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <h5 class="card-title fw-semibold">Teachers</h5>
+    <!-- Button to Open Add Staff Member Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
         Add New Staff
-      </button>
+    </button>
+    </div>
+
 
       <!-- Teachers Table -->
       <table class="table mt-3">
