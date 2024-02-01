@@ -42,7 +42,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <div class="card">
     <div class="card-body">
     <div class="d-flex justify-content-between align-items-center mb-4">
-    <h5 class="card-title fw-semibold">Teachers</h5>
+    <h5 class="card-title fw-semibold">Staff</h5>
     <!-- Button to Open Add Staff Member Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
         Add New Staff
@@ -82,11 +82,84 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
     </div>
   </div>
+
+
+  <script>
+function addStaffMember() {
+  // Example function to handle adding a staff member
+  // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
+  console.log('Adding staff member...');
+  
+  $.ajax({
+    type: "POST",
+    url: "scripts/add_staff.php",
+    data: $("#addStaffForm").serialize(),
+    success: function(response) {
+      // Handle success (e.g., close modal, refresh table)
+      $('#addStaffModal').modal('hide');
+      alert('Staff member added successfully!');
+    },
+    error: function() {
+      alert('Error adding staff member!');
+      // Handle error
+    }
+  });
+  */
+}
+</script>
+
+
+
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/sidebarmenu.js"></script>
   <script src="assets/js/app.min.js"></script>
   <script src="assets/libs/simplebar/dist/simplebar.js"></script>
+
+
+
+  <!-- Add Staff Member Modal -->
+<div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addStaffModalLabel">Add New Staff Member</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addStaffForm">
+          <div class="form-group">
+            <label for="staffName">Name</label>
+            <input type="text" class="form-control" id="staffName" name="staffName" required>
+          </div>
+          <div class="form-group">
+            <label for="staffEmail">Email</label>
+            <input type="email" class="form-control" id="staffEmail" name="staffEmail" required>
+          </div>
+          <div class="form-group">
+            <label for="staffSubject">Role</label>
+
+            <!-- Select Role -->
+            <select class="form-control" id="staffSubject" name="staffSubject" required>
+              <option value="" selected disabled>Select Role</option>
+              <option value="Mathematics">Admin</option>
+              <option value="English">Faculty</option>
+              <option value="Science">Other</option>
+            </select>
+            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="addStaffMember()">Add Staff</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 
 </html>
