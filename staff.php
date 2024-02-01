@@ -40,7 +40,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
       <!--  Header End -->
       <div class="container-fluid">
-  <div class="card">
+  <div class="card bg-dark text-white">
     <div class="card-body w-100">
     <div class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="card-title fw-semibold">Staff</h5>
@@ -127,9 +127,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <!-- Select Role -->
             <select class="form-control" id="staffRole" name="staffRole" required>
               <option value="" selected disabled>Select Role</option>
-              <option value="Mathematics">Admin</option>
-              <option value="English">Faculty</option>
-              <option value="Science">Other</option>
+              <option value="Admin">Admin</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Other">Other</option>
             </select>
             
           </div>
