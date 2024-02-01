@@ -43,13 +43,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <div class="container-fluid">
   <div class="card" style="background: #f5f5f5;">
       <div class="card-body w-100">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-    <h5 class="card-title fw-semibold">Staff</h5>
-    <!-- Button to Open Add Staff Member Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
-        Add New Staff
-    </button>
-    </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+      <!-- Search Field -->
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
+          <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+          </div>
+      </div>
+
+      <!-- Button to Open Add Staff Member Modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
+          Add New Staff
+      </button>
+      </div>
+
 
 
       <!-- Teachers Table -->
@@ -146,8 +155,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
 
-
-
  <!-- Add Staff Member Modal -->
  <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -189,6 +196,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
   </div>
 </div>
+
+
+<script>
+$(document).ready(function(){
+    $("#searchButton").click(function(){
+        var value = $("#searchInput").val().toLowerCase();
+        $("table tbody tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+
+    // Optional: Trigger search on input field "Enter" key press
+    $("#searchInput").on("keyup", function(event) {
+        if (event.keyCode === 13) { // 13 is the Enter key
+            $("#searchButton").click();
+        }
+    });
+});
+</script>
+
+
 
 <script>
 $(document).ready(function(){
