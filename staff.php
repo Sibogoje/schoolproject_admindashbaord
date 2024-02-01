@@ -44,7 +44,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="card-title fw-semibold">Staff</h5>
     <!-- Button to Open Add Staff Member Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-target="#addStaffModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
         Add New Staff
     </button>
     </div>
@@ -160,6 +160,9 @@ function addStaffMember() {
   <script src="assets/js/sidebarmenu.js"></script>
   <script src="assets/js/app.min.js"></script>
   <script src="assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 
 
