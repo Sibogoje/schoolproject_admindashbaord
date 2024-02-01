@@ -6,6 +6,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirect to login page
-header("Location: scripts/login.php");
+header("Location: auth.php");
 exit;
 ?>
