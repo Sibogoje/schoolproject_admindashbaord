@@ -80,7 +80,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echo "<td>" . htmlspecialchars($row['role']) . "</td>";
           echo "<td>" . htmlspecialchars($row['last_login']) . "</td>";
           echo "<td>";
-          echo "<button class='btn btn-success btn-sm' onclick='editStaff(" . $row['id'] . ")'> <i class='material-icons'>edit</i></button> ";
+          echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+
           echo "<button class='btn btn-danger btn-sm' onclick='deleteStaff(" . $row['id'] . ")'> <i class='material-icons'>delete</i></button>";
           echo "</td>";
           echo "</tr>";
@@ -99,6 +100,45 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
     </div>
   </div>
+
+
+<!-- Edit Staff Member Modal -->
+<div class="modal fade" id="editStaffModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editStaffModalLabel">Edit Staff Member</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="editStaffForm">
+          <input type="hidden" id="editId" name="id">
+          <div class="form-group">
+            <label for="editName">Name</label>
+            <input type="text" class="form-control" id="editName" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="editEmail">Email</label>
+            <input type="email" class="form-control" id="editEmail" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="editRole">Role</label>
+            <input type="text" class="form-control" id="editRole" name="role" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="updateStaffMember()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
  <!-- Add Staff Member Modal -->
@@ -143,9 +183,43 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   </div>
 </div>
 
+<script>
+$(document).ready(function(){
+  $('.editBtn').click(function(){
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+    var email = $(this).data('email');
+    var role = $(this).data('role');
+    
+    $('#editId').val(id);
+    $('#editName').val(name);
+    $('#editEmail').val(email);
+    $('#editRole').val(role);
+  });
+});
+</script>
 
 
-  <script>
+<script>
+  function updateStaffMember() {
+  $.ajax({
+    type: "POST",
+    url: "scripts/update_staff.php", // Path to your update script
+    data: $("#editStaffForm").serialize(),
+    dataType: "json",
+    success: function(response) {
+      // Handle success (e.g., close modal, refresh table)
+      $('#editStaffModal').modal('hide');
+      location.reload(); // Reload the page to see the changes
+    },
+    error: function() {
+      alert('Error updating staff member!');
+    }
+  });
+}
+
+</script>
+<script>
 function addStaffMember() {
   // Example function to handle adding a staff member
   // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
