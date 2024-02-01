@@ -51,6 +51,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
       <!-- Teachers Table -->
+      <div class="table-responsive">
       <table class="table mt-3">
         <thead>
           <tr>
@@ -78,6 +79,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <!-- Repeat for each teacher -->
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </div>
