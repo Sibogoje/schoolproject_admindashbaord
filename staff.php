@@ -73,8 +73,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <td>Mathematics</td>
             <td>Today</td>
             <td>
-              <button class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-danger btn-sm"> <i class="material-icons">delete</i></i></button>
+              <button class="btn btn-success btn-sm"> <i class="material-icons">edit</i></button>
+              <button class="btn btn-danger btn-sm"> <i class="material-icons">delete</i></button>
             </td>
           </tr>
           <!-- Repeat for each teacher -->
