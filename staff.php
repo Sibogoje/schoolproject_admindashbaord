@@ -115,7 +115,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       </div>
       <div class="modal-body">
         <form id="editStaffForm">
-          <input type="hidden" id="editId" name="id">
+          <input type="hidden" id="editId" name="editId">
           <div class="form-group">
             <label for="editName">Name</label>
             <input type="text" class="form-control" id="editName" name="editName" required>
