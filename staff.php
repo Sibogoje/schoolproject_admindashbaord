@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once 'config.php';
 // Check if the user is logged in, using a session variable (e.g., $_SESSION['loggedin'])
 // This assumes you set this session variable at login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
