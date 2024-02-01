@@ -40,7 +40,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <!--  Header End -->
       <div class="container-fluid">
   <div class="card">
-    <div class="card-body">
+    <div class="card-body w-100">
     <div class="d-flex justify-content-between align-items-center mb-4">
     <h5 class="card-title fw-semibold">Staff</h5>
     <!-- Button to Open Add Staff Member Modal -->
