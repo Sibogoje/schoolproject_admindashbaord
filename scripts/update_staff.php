@@ -7,9 +7,9 @@ require_once '../config.php'; // Adjust the path as needed
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Extract and sanitize the input data
     $id = $conn->real_escape_string(trim($_POST['id']));
-    $name = $conn->real_escape_string(trim($_POST['editName']));
-    $email = $conn->real_escape_string(trim($_POST['editEmail']));
-    $role = $conn->real_escape_string(trim($_POST['editRole']));
+    $name = $conn->real_escape_string(trim($_POST['name']));
+    $email = $conn->real_escape_string(trim($_POST['email']));
+    $role = $conn->real_escape_string(trim($_POST['role']));
 
     // Prepare the SQL statement
     $sql = "UPDATE staff SET name = ?, email = ?, role = ? WHERE id = ?";
