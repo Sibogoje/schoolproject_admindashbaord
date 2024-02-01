@@ -7,23 +7,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $conn->real_escape_string(trim($_POST['lastName']));
     $email = $conn->real_escape_string(trim($_POST['email']));
     $username = $conn->real_escape_string(trim($_POST['username']));
+    $role = $conn->real_escape_string(trim($_POST['role']));
     $password = $conn->real_escape_string(trim($_POST['password']));
     
     // Hash the password
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
     
     // Prepare SQL and bind parameters
-    $stmt = $conn->prepare("INSERT INTO users (firstName, lastName, email, username, password_hash) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $firstName, $lastName, $email, $username, $passwordHash);
+    $stmt = $conn->prepare("INSERT INTO adminlogin (`first_name`, `last_name`, `email`, `username`, `role`, `password_hash`) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $firstName, $lastName, $email, $username, $role, $passwordHash);
     
     if ($stmt->execute()) {
-        echo "Registration successful!";
-        // Redirect or inform the user of success
+        $response['status'] = 'success';
+        $response['message'] = 'Registration successful';
     } else {
-        echo "Error: " . $stmt->error;
-        // Handle error
+        $response['message'] = 'Registration failed';
+
     }
     $stmt->close();
 }
+
+echo json_encode($response);
 $conn->close();
 ?>

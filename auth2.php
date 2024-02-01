@@ -25,7 +25,7 @@
                   <img src="login logo.png" width="380" alt="">
                 </a>
                
-                <form action="register.php" method="post" id="registrationForm">
+                <form action="" method="post" id="registrationForm">
                 <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstName">First Name:</label>
@@ -36,10 +36,18 @@
                     <input type="text" class="form-control" id="lastName" name="lastName" required>
                 </div>
                  </div>
-
+                 <div class="form-row">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Role:</label>
+                    <select class="form-control" id="role" name="role" required>
+                        <option value="admin">Admin</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                </div>
                 </div>
                 <div class="form-row">
                 <div class="form-group col-md-6">
@@ -70,7 +78,7 @@
 
 <script>
     $(document).ready(function(){
-      $("#loginForm").submit(function(event){
+      $("#registrationForm").submit(function(event){
         event.preventDefault(); // Prevent the form from submitting via the browser.
 
         $.ajax({

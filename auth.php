@@ -69,7 +69,7 @@
           success: function(data) {
             if(data.status == 'success') {
               // Redirect to a logged-in page or update UI accordingly.
-              window.location.href = 'dashboard.php';
+              window.location.href = 'index.php';
             } else {
               // Show an error message
               alert(data.message);
