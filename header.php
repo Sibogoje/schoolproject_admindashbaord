@@ -14,20 +14,21 @@
              </li>
              <script>
               document.addEventListener('DOMContentLoaded', function() {
-                  // Assuming URL pattern like "http://example.com/#/page-name" or "http://example.com/page-name"
+                  // Assuming URL pattern like "http://example.com/page-name.php" or "http://example.com/#/page-name"
                   var urlPath = window.location.pathname || window.location.hash;
                   // Extract the page name using regex. Adjust the regex pattern based on your URL structure.
                   var pageName = urlPath.match(/\/([^\/]*?)(\/?|)$/)[1];
-                  // Convert dashes to spaces and capitalize if needed
-                  pageName = pageName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                  // Remove the .php extension, convert dashes to spaces, and capitalize if needed
+                  pageName = pageName.replace('.php', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
                   // Check if pageName is empty or not, set a default value if it is
-                  if (!pageName) pageName = "Home"; // Default page name
-                  
+                  if (!pageName || pageName === 'Index') pageName = "Home"; // Default page name, treating 'Index' as 'Home'
+
                   // Set the extracted page name to the navigation item
                   document.getElementById('dynamicPageName').textContent = pageName;
               });
               </script>
+
 
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
