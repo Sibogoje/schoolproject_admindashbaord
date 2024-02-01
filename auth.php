@@ -66,6 +66,7 @@
           type: "POST",
           url: "scripts/login.php", // The PHP file that processes the login logic.
           data: $(this).serialize(), // Serializes the form's elements.
+          dataType: "json", // Ensure this is set to expect a JSON response
           success: function(response) {
             if(response.status == 'success') {
               // Redirect to a logged-in page or update UI accordingly.
