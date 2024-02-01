@@ -27,11 +27,11 @@
                
                 <form action="register.php" method="post" id="registrationForm">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-5">
             <label for="firstName">First Name:</label>
             <input type="text" class="form-control" id="firstName" name="firstName" required>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-5">
             <label for="lastName">Last Name:</label>
             <input type="text" class="form-control" id="lastName" name="lastName" required>
         </div>
