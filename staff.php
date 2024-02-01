@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
         <div class="d-flex justify-content-between align-items-center mb-4">
       <!-- Search Field -->
-      <div class="input-group">
+      <div class="input-group w-50">
           <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
           <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
