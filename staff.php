@@ -64,7 +64,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody>
+  <tbody>
   <?php
   // Query to select all staff members
   $query = "SELECT id, name, email, role, last_login FROM staff ORDER BY name ASC";
