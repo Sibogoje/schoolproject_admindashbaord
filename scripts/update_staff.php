@@ -6,7 +6,7 @@ require_once '../config.php'; // Adjust the path as needed
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Extract and sanitize the input data
-    $id = $conn->real_escape_string(trim($_POST['editId']));
+    $id = $conn->real_escape_string(trim($_POST['id']));
     $name = $conn->real_escape_string(trim($_POST['editName']));
     $email = $conn->real_escape_string(trim($_POST['editEmail']));
     $role = $conn->real_escape_string(trim($_POST['editRole']));
