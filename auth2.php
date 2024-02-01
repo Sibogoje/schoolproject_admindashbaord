@@ -97,6 +97,7 @@
           success: function(response) {
             if(response.status == 'success') {
               // Redirect to a logged-in page or update UI accordingly.
+              alert(response.message);
               window.location.href = 'auth.php';
             } else {
               // Show an error message
