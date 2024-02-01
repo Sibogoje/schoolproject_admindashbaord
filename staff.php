@@ -218,13 +218,9 @@ $(document).ready(function() {
                 data: { id: id },
                 dataType: "json",
                 success: function(response) {
-                   // var jsonData = JSON.parse(response);
-                    if (jsonData.status === 'success') {
-                      alert(response.message);
-                        location.reload(); // Reload the page to see the changes
-                    } else {
-                      alert(response.message);
-                    }
+                  alert(response.message);
+                  location.reload(); // Reload the page to see the changes
+
                 },
                 error: function() {
                   alert(response.message);
