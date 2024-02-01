@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Prepare SQL and bind parameters
     $stmt = $conn->prepare("INSERT INTO adminlogin (`first_name`, `last_name`, `email`, `username`, `role`, `password_hash`) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $firstName, $lastName, $email, $username, $role, $passwordHash);
+    $stmt->bind_param("ssssss", $firstName, $lastName, $email, $username, $role, $passwordHash);
     
     if ($stmt->execute()) {
         $response['status'] = 'success';
