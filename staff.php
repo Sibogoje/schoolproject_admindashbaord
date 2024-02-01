@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
       <div class="d-flex justify-content-between align-items-center mb-4">
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
-        <div class="col-lg-4"> <!-- Adjust the column size as needed -->
+        <div class="col-lg-8"> <!-- Adjust the column size as needed -->
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
                 <div class="input-group-append">
