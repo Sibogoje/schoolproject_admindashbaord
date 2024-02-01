@@ -44,7 +44,7 @@
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group  col-md-6">
-                    <label for="email">Role:</label>
+                    <label for="role">Role:</label>
                     <select class="form-control" id="role" name="role" required>
                         <option value="admin">Admin</option>
                         <option value="teacher">Teacher</option>
