@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search staff..." id="searchInput">
             </div>
         </div>
     </div>
