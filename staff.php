@@ -102,11 +102,10 @@ function addStaffMember() {
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
       $('#addStaffModal').modal('hide');
-      alert('Staff member added successfully!');
+      alert(message);
     },
-    error: function() {
-      alert('Error adding staff member!');
-      // Handle error
+    error: function(response) {
+      alert(message);
     }
   });
 }
@@ -136,7 +135,7 @@ function addStaffMember() {
             <label for="staffSubject">Role</label>
 
             <!-- Select Role -->
-            <select class="form-control" id="staffSubject" name="staffSubject" required>
+            <select class="form-control" id="staffRole" name="staffRole" required>
               <option value="" selected disabled>Select Role</option>
               <option value="Mathematics">Admin</option>
               <option value="English">Faculty</option>
