@@ -146,10 +146,10 @@ function addStaffMember() {
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
       $('#addStaffModal').modal('hide');
-      alert(message);
+      alert(response.message);
     },
-    error: function(response) {
-      alert(message);
+    error: function() {
+      alert(response.message);
     }
   });
 }
