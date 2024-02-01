@@ -6,13 +6,13 @@ require_once '../config.php'; // Adjust the path as needed
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Extract and sanitize the input data
-    $id = $conn->real_escape_string(trim($_POST['id']));
+    $id = $conn->real_escape_string(trim($_POST['editId']));
     $name = $conn->real_escape_string(trim($_POST['editName']));
     $email = $conn->real_escape_string(trim($_POST['editEmail']));
     $role = $conn->real_escape_string(trim($_POST['editRole']));
 
     // Prepare the SQL statement
-    $sql = "UPDATE staff SET name = ?, email = ?, role = ? WHERE id = ?";
+    $sql = "UPDATE `staff` SET `name` = ?, `email` = ?, `role` = ? WHERE `id` = ?";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement
