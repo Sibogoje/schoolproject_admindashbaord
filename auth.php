@@ -66,13 +66,13 @@
           type: "POST",
           url: "scripts/login.php", // The PHP file that processes the login logic.
           data: $(this).serialize(), // Serializes the form's elements.
-          success: function(data) {
-            if(data.status == 'success') {
+          success: function(response) {
+            if(response.status == 'success') {
               // Redirect to a logged-in page or update UI accordingly.
               window.location.href = 'index.php';
             } else {
               // Show an error message
-              alert(data.message);
+              alert(response.message);
             }
           }
         });
