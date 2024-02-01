@@ -126,7 +126,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           </div>
           <div class="form-group">
             <label for="editRole">Role</label>
-            <input type="text" class="form-control" id="editRole" name="editRole" required>
+            <select class="form-control" id="editRole" name="editRole" required>
+              <option value="" selected disabled>Select Role</option>
+              <option value="Admin">Admin</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </form>
       </div>
