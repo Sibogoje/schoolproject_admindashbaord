@@ -44,20 +44,24 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <div class="card" style="background: #f5f5f5;">
       <div class="card-body w-100">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-      <!-- Search Field -->
-      <div class="input-group w-50">
-          <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
-          <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
-          </div>
-      </div>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
+        <div class="col-lg-4"> <!-- Adjust the column size as needed -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search staff..." id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <!-- Button to Open Add Staff Member Modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
-          Add New Staff
-      </button>
-      </div>
+    <!-- Button to Open Add Staff Member Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
+        Add New Staff
+    </button>
+</div>
+
 
 
 
