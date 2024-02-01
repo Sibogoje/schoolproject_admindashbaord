@@ -57,7 +57,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Subject</th>
+            <th scope="col">Role</th>
+            <th scope="col">Last_Login</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -68,6 +69,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <td>John Doe</td>
             <td>johndoe@example.com</td>
             <td>Mathematics</td>
+            <td>Today</td>
             <td>
               <button class="btn btn-success btn-sm">Edit</button>
               <button class="btn btn-danger btn-sm">Delete</button>
