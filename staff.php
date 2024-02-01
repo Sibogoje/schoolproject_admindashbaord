@@ -143,6 +143,7 @@ function addStaffMember() {
     type: "POST",
     url: "scripts/add_staff.php",
     data: $("#addStaffForm").serialize(),
+    dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
       $('#addStaffModal').modal('hide');
