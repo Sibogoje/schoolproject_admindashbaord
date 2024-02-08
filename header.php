@@ -97,7 +97,7 @@ function resetInactivityTimer() {
         logoutUser(); // Call logout function
       }
     }, 1000);
-  }, 60000); // 1 minutes in milliseconds
+  }, 1360000); // 1 minutes in milliseconds
 }
 
 // Function to log out the user (adjust as needed)
