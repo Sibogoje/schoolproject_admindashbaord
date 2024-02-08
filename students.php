@@ -161,7 +161,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateStaffMember()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateStudent()">Save changes</button>
       </div>
     </div>
   </div>
@@ -289,7 +289,7 @@ $(document).ready(function() {
 
 
 <script>
-  function updateStaffMember() {
+  function updateStudent() {
   $.ajax({
     type: "POST",
     url: "scripts/update_staff.php", // Path to your update script
