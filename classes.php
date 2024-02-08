@@ -343,11 +343,11 @@ $(document).ready(function() {
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
-      $('#editStaffModal').modal('hide');
+      $('#editClassModal').modal('hide');
       location.reload(); // Reload the page to see the changes
     },
     error: function() {
-      alert('Error updating staff member!');
+      alert('Error updating Class!');
     }
   });
 }
@@ -357,7 +357,7 @@ $(document).ready(function() {
 function addClass() {
   // Example function to handle adding a staff member
   // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
-  console.log('Adding staff member...');
+  console.log('Adding Class...');
   
   $.ajax({
     type: "POST",
