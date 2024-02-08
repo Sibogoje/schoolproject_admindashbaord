@@ -16,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // Prepare the SQL statement
-    $sql = "UPDATE `students` SET `name` = ?,  `surname` = ?, `phone`, `email` = ? WHERE `id` = ?";
+    $sql = "UPDATE `students` SET `name` = ?,  `surname` = ?,   student_id ` = ?, `phone` = ?, `email` = ? WHERE `id` = ?";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement
-        $stmt->bind_param("sisssi", $editName,  $editSurname, $editPhone, $editEmail, $id);
+        $stmt->bind_param("ssissi", $editName,  $editSurname, $editStudent_id, $editPhone, $editEmail, $id);
 
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {
