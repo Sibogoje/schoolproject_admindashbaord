@@ -75,34 +75,43 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           </tr>
         </thead>
   <tbody>
+
+
   <?php
-  // Query to select all staff members
-  $query = "SELECT c.id, c.name, d.name AS department_name, f.name AS faculty_name FROM class c
-  LEFT JOIN department d ON c.department_id = d.id
-  LEFT JOIN staff f ON c.faculty_id = f.id
-  ORDER BY c.name ASC";
-  $result = $conn->query($query);
+// Adjust your query
+$query = "SELECT 
+            c.id, 
+            c.name AS class_name, 
+            d.name AS department_name, 
+            s.name AS faculty_name 
+          FROM 
+            class c
+            LEFT JOIN department d ON c.department = d.id
+            LEFT JOIN staff s ON c.faculty = s.id AND s.role = 'Faculty'
+          ORDER BY 
+            c.name ASC";
 
-  if ($result->num_rows > 0) {
-  // Output data of each row
-  while($row = $result->fetch_assoc()) {
-  echo "<tr>";
-  echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
-  echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-  echo "<td>" . htmlspecialchars($row['department_name']) . "</td>"; // Updated
-  echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>"; // Updated
-  echo "<td>";
-  // Assuming you have a way to fetch 'email' and 'role', which are not mentioned in the SELECT
-  echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
-  echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
-  echo "</td>";
-  echo "</tr>";
-  }
-  } else {
-  echo "<tr><td colspan='6'>No class found</td></tr>";
-  }
+$result = $conn->query($query);
 
-  ?>
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
+        echo "<td>" . htmlspecialchars($row['class_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['department_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>";
+        echo "<td>";
+        // Modify button attributes as needed
+        echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+        echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>No class found</td></tr>";
+}
+?>
+
 </tbody>
 
       </table>
