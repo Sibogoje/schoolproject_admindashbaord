@@ -81,6 +81,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 // Adjust your query
 $query = "SELECT 
             c.id, 
+            c.department,
+            c.faculty,
             c.name AS class_name, 
             d.name AS department_name, 
             s.name AS faculty_name 
@@ -104,7 +106,7 @@ if ($result->num_rows > 0) {
         // Modify button attributes as needed
         echo "<button class='btn btn-success btn-sm editBtn' 
         data-id='" . $row['id'] . "' 
-        data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "'
+        data-name='" . htmlspecialchars($row['class_name'], ENT_QUOTES) . "'
         data-department='" . htmlspecialchars($row['department'], ENT_QUOTES) . "'
         data-faculty='" . htmlspecialchars($row['faculty'], ENT_QUOTES) . "'
         data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
