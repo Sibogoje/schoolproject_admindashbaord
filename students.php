@@ -169,47 +169,48 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
 
- <!-- Add Student Member Modal -->
- <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+ <!-- Add Sfaff Modal -->
+ <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addStudentModalLabel">Add New Student Member</h5>
+        <h5 class="modal-title" id="addStaffModalLabel">Add New Student</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="addStudentForm">
-        <div class="form-group">
-            <label for="Student_No">Roll #</label>
-            <input type="text" class="form-control" id="Student_No" name="Student_No" required>
+        <form id="addStaffForm">
+          <div class="form-group">
+            <label for="staffName">Name</label>
+            <input type="text" class="form-control" id="staffName" name="staffName" required>
           </div>
           <div class="form-group">
-            <label for="StudentName">Name</label>
-            <input type="text" class="form-control" id="StudentName" name="StudentName" required>
+            <label for="staffEmail">Email</label>
+            <input type="email" class="form-control" id="staffEmail" name="staffEmail" required>
           </div>
           <div class="form-group">
-            <label for="StudentSurname">Surname</label>
-            <input type="text" class="form-control" id="StudentSurname" name="StudentSurname" required>
-          </div>
-          <div class="form-group">
-            <label for="StudentEmail">Email</label>
-            <input type="email" class="form-control" id="StudentEmail" name="StudentEmail" required>
-          </div>
-          <div class="form-group">
-            <label for="StudentPhone">Phone</label>
-            <input type="text" class="form-control" id="StudentPhone" name="StudentPhone" required>
+            <label for="staffSubject">Role</label>
+
+            <!-- Select Role -->
+            <select class="form-control" id="staffRole" name="staffRole" required>
+              <option value="" selected disabled>Select Role</option>
+              <option value="Admin">Admin</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Other">Other</option>
+            </select>
+            
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addStudent()">Add Student</button>
+        <button type="button" class="btn btn-primary" onclick="addStaffMember()">Add Staff</button>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <script>
