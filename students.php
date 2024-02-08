@@ -202,7 +202,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addStudent()">Add Staff</button>
+        <button type="button" class="btn btn-primary" onclick="addStudent()">Add Student</button>
       </div>
     </div>
   </div>

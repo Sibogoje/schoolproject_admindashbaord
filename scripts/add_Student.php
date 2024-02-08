@@ -7,10 +7,10 @@ require_once '../config.php'; // Adjust the path as needed to point to your conf
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract and sanitize the input data
     $Student_No = $conn->real_escape_string(trim($_POST['studentNo']));
-    $StudentName = $conn->real_escape_string(trim($_POST['StudentName']));
-    $StudentSurname = $conn->real_escape_string(trim($_POST['StudentSurname']));
-    $StudentEmail = $conn->real_escape_string(trim($_POST['StudentEmail']));
-    $StudentPhone = $conn->real_escape_string(trim($_POST['StudentPhone']));
+    $StudentName = $conn->real_escape_string(trim($_POST['studentName']));
+    $StudentSurname = $conn->real_escape_string(trim($_POST['studentSurname']));
+    $StudentEmail = $conn->real_escape_string(trim($_POST['studentEmail']));
+    $StudentPhone = $conn->real_escape_string(trim($_POST['studentPhone']));
 
     // Prepare an INSERT statement
     $query = "INSERT INTO students (student_id, name, surname, phone, email) VALUES (?, ?, ?, ?, ?)";
