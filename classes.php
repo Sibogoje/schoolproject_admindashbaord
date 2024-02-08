@@ -93,7 +93,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>"; // Updated
   echo "<td>";
   // Assuming you have a way to fetch 'email' and 'role', which are not mentioned in the SELECT
-  echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+  echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
   echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
   echo "</td>";
   echo "</tr>";
