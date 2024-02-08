@@ -297,7 +297,7 @@ $(document).ready(function() {
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
-      $('#editStudentModal').modal('hide');
+      $('#editStaffModal').modal('hide');
       location.reload(); // Reload the page to see the changes
     },
     error: function() {
