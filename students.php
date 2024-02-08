@@ -102,7 +102,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
           data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
           data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
-          data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+          data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
           echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
           echo "</td>";
