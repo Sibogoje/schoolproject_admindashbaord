@@ -139,7 +139,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
             <label for="editStudent_id">Roll #</label>
-            <input type="text" class="form-control" id="editStudent_id" name="editStudent_id" required>
+            <input type="number" class="form-control" id="editStudent_id" name="editStudent_id" required>
           </div>
           <div class="form-group">
             <label for="editName">Name</label>
