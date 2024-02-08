@@ -256,7 +256,7 @@ $(document).ready(function(){
     $('#editName').val(name);
     $('#editSurname').val(surname);
     $('#editEmail').val(email);
-    $('#phone').val(phone);
+    $('#editPhone').val(phone);
     $('#editStudent_id').val(student_id);
   });
 });
