@@ -160,42 +160,42 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
  <!-- Add Staff Member Modal -->
- <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+ <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addStaffModalLabel">Add New Staff Member</h5>
+        <h5 class="modal-title" id="addStaffModalLabel">Add New Student</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form id="addStaffForm">
+      <form id="addStudentForm">
           <div class="form-group">
-            <label for="staffName">Name</label>
-            <input type="text" class="form-control" id="staffName" name="staffName" required>
+            <label for="studentNo">Roll #</label>
+            <input type="text" class="form-control" id="studentNo" name="studentNo" required>
+          <div class="form-group">
+            <label for="studentName">Name</label>
+            <input type="text" class="form-control" id="studentName" name="studentName" required>
           </div>
           <div class="form-group">
-            <label for="staffEmail">Email</label>
-            <input type="email" class="form-control" id="staffEmail" name="staffEmail" required>
+            <label for="studentSurname">Surname</label>
+            <input type="text" class="form-control" id="studentSurname" name="studentSurname" required>
           </div>
           <div class="form-group">
-            <label for="staffSubject">Role</label>
-
-            <!-- Select Role -->
-            <select class="form-control" id="staffRole" name="staffRole" required>
-              <option value="" selected disabled>Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Faculty">Faculty</option>
-              <option value="Other">Other</option>
-            </select>
-            
+            <label for="studentEmail">Email</label>
+            <input type="email" class="form-control" id="studentEmail" name="studentEmail" required>
           </div>
+          <div class="form-group">
+            <label for="studentPhone">Phone</label>
+            <input type="text" class="form-control" id="studentPhone" name="studentPhone" required>
+          </div>
+          
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addStaffMember()">Add Staff</button>
+        <button type="button" class="btn btn-primary" onclick="addStudent()">Add Staff</button>
       </div>
     </div>
   </div>
@@ -294,19 +294,19 @@ $(document).ready(function() {
 
 </script>
 <script>
-function addStaffMember() {
+function addStudent() {
   // Example function to handle adding a staff member
   // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
-  console.log('Adding staff member...');
+  console.log('Adding student member...');
   
   $.ajax({
     type: "POST",
-    url: "scripts/add_staff.php",
-    data: $("#addStaffForm").serialize(),
+    url: "scripts/add_student.php",
+    data: $("#addStudentForm").serialize(),
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
-      $('#addStaffModal').modal('hide');
+      $('#addStudentModal').modal('hide');
       alert(response.message);
       //reload the page
       location.reload();
