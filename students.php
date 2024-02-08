@@ -140,7 +140,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <div class="form-group">
             <label for="editStudent_id">Roll #</label>
             <input type="text" class="form-control" id="editStudent_id" name="editStudent_id" required>
-
           <div class="form-group">
             <label for="editName">Name</label>
             <input type="text" class="form-control" id="editName" name="editName" required>
@@ -246,17 +245,14 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
-    var student_id = $(this).data('student_id');
     var name = $(this).data('name');
     var email = $(this).data('email');
-    var phone = $(this).data('phone');
-    var surname = $(this).data('surname');
+    var role = $(this).data('role');
     
     $('#editId').val(id);
     $('#editName').val(name);
     $('#editEmail').val(email);
-    $('#editPhone').val(phone);
-    $('#editSurname').val(surname);
+    $('#editRole').val(role);
   });
 });
 </script>
@@ -288,7 +284,7 @@ $(document).ready(function() {
 
 
 <script>
-  function updateStudent() {
+  function updateStaffMember() {
   $.ajax({
     type: "POST",
     url: "scripts/update_staff.php", // Path to your update script
