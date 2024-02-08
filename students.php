@@ -57,7 +57,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
 
     <!-- Button to Open Add Staff Member Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStaffModal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">
         Add New Staff
     </button>
 </div>
