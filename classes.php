@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   // Query to select all staff members
   $query = "SELECT c.id, c.name, d.name AS department_name, f.name AS faculty_name FROM class c
   LEFT JOIN department d ON c.department_id = d.id
-  LEFT JOIN faculty f ON c.faculty_id = f.id
+  LEFT JOIN staff f ON c.faculty_id = f.id
   ORDER BY c.name ASC";
   $result = $conn->query($query);
 
