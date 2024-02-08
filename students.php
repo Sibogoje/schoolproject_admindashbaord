@@ -292,7 +292,7 @@ $(document).ready(function() {
   function updateStudent() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_staff.php", // Path to your update script
+    url: "scripts/update_Student.php", // Path to your update script
     data: $("#editStaffForm").serialize(),
     dataType: "json",
     success: function(response) {
