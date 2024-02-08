@@ -102,7 +102,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
           data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
           data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
-          data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
+          data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
           echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
           echo "</td>";
@@ -135,7 +135,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </button>
       </div>
       <div class="modal-body">
-        <form id="editStudentForm">
+        <form id="editStaffForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
             <label for="editStudent_id">Roll #</label>
@@ -257,7 +257,6 @@ $(document).ready(function(){
     $('#editEmail').val(email);
     $('#editPhone').val(phone);
     $('#editSurname').val(surname);
-    $('#editStudent_id').val(student_id);
   });
 });
 </script>
@@ -267,7 +266,7 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('.deleteBtn').click(function() {
         var id = $(this).data('id');
-        if(confirm('Are you sure you want to delete this student?')) {
+        if(confirm('Are you sure you want to delete this staff member?')) {
             $.ajax({
                 type: "POST",
                 url: "scripts/delete_staff.php", // Path to your delete script
@@ -292,8 +291,8 @@ $(document).ready(function() {
   function updateStudent() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_Student.php", // Path to your update script
-    data: $("#editStudentForm").serialize(),
+    url: "scripts/update_staff.php", // Path to your update script
+    data: $("#editStaffForm").serialize(),
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
