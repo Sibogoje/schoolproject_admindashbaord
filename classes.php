@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
-                <input type="text" style="background: white;" class="form-control" placeholder="Search staff..." id="searchInput">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search Class..." id="searchInput">
             </div>
         </div>
     </div>
@@ -102,7 +102,12 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>";
         echo "<td>";
         // Modify button attributes as needed
-        echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+        echo "<button class='btn btn-success btn-sm editBtn' 
+        data-id='" . $row['id'] . "' 
+        data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "'
+        data-department='" . htmlspecialchars($row['department'], ENT_QUOTES) . "'
+        data-faculty='" . htmlspecialchars($row['faculty'], ENT_QUOTES) . "'
+        data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
         echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
         echo "</td>";
         echo "</tr>";
@@ -125,7 +130,7 @@ if ($result->num_rows > 0) {
 
 
 <!-- Edit Staff Member Modal -->
-<div class="modal fade" id="editStaffModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
+<div class="modal fade" id="editClassModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -135,7 +140,7 @@ if ($result->num_rows > 0) {
         </button>
       </div>
       <div class="modal-body">
-        <form id="editStaffForm">
+        <form id="editClassForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
             <label for="editName">Name</label>
@@ -150,7 +155,7 @@ if ($result->num_rows > 0) {
 
           <div class="form-group">
           <label for="editdepartment">Department</label>
-          <select class="form-control" id="editdepartment" name="editdepartment" required>
+          <select class="form-control" id="editDepartment" name="editDepartment" required>
             <option value="" selected disabled>Select Department</option>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -173,7 +178,7 @@ if ($result->num_rows > 0) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateStaffMember()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateClass()">Save changes</button>
       </div>
     </div>
   </div>
@@ -282,13 +287,13 @@ $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
     var name = $(this).data('name');
-    var email = $(this).data('email');
-    var role = $(this).data('role');
+    var department = $(this).data('department');
+    var faculty = $(this).data('faculty');
     
     $('#editId').val(id);
     $('#editName').val(name);
-    $('#editEmail').val(email);
-    $('#editRole').val(role);
+    $('#editDepartment').val(department);
+    $('#editFaculty').val(faculty);
   });
 });
 </script>
@@ -320,11 +325,11 @@ $(document).ready(function() {
 
 
 <script>
-  function updateStaffMember() {
+  function updateClass() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_staff.php", // Path to your update script
-    data: $("#editStaffForm").serialize(),
+    url: "scripts/update_class.php", // Path to your update script
+    data: $("#editClassForm").serialize(),
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
