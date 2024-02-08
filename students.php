@@ -125,7 +125,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
 <!-- Edit Student Modal -->
-<div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
+<div class="modal fade" id="editStaffModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -138,29 +138,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <form id="editStaffForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
-            <label for="editStudent_id">Roll #</label>
-            <input type="text" class="form-control" id="editStudent_id" name="editStudent_id" required>
-          <div class="form-group">
             <label for="editName">Name</label>
             <input type="text" class="form-control" id="editName" name="editName" required>
-          </div>
-          <div class="form-group">
-            <label for="editSurname">Surname</label>
-            <input type="text" class="form-control" id="editSurname" name="editSurname" required>
           </div>
           <div class="form-group">
             <label for="editEmail">Email</label>
             <input type="email" class="form-control" id="editEmail" name="editEmail" required>
           </div>
           <div class="form-group">
-            <label for="editPhone">Phone</label>
-            <input type="text" class="form-control" id="editPhone" name="editPhone" required>
+            <label for="editRole">Role</label>
+            <select class="form-control" id="editRole" name="editRole" required>
+              <option value="" selected disabled>Select Role</option>
+              <option value="Admin">Admin</option>
+              <option value="Faculty">Faculty</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateStudent()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateStaffMember()">Save changes</button>
       </div>
     </div>
   </div>
