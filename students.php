@@ -94,19 +94,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echo "<td>" . htmlspecialchars($row['email']) . "</td>";
           echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
           echo "<td>";
+
+
           echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' 
           data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' 
           data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
-          data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' 
+          data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
+          data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
+          data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
           data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
-
           echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
           echo "</td>";
           echo "</tr>";
       }
   } else {
-      echo "<tr><td colspan='6'>No staff found</td></tr>";
+      echo "<tr><td colspan='6'>No Students found</td></tr>";
   }
   ?>
 </tbody>
@@ -126,7 +129,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editStaffModalLabel">Edit Staff Member</h5>
+        <h5 class="modal-title" id="editStaffModalLabel">Edit Students</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -305,7 +308,7 @@ function addStudent() {
   
   $.ajax({
     type: "POST",
-    url: "scripts/add_student.php",
+    url: "scripts/add_Student.php",
     data: $("#addStudentForm").serialize(),
     dataType: "json",
     success: function(response) {

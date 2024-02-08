@@ -6,7 +6,7 @@ require_once '../config.php'; // Adjust the path as needed to point to your conf
 // Check if the request is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Extract and sanitize the input data
-    $Student_No = $conn->real_escape_string(trim($_POST['Student_No']));
+    $Student_No = $conn->real_escape_string(trim($_POST['studentNo']));
     $StudentName = $conn->real_escape_string(trim($_POST['StudentName']));
     $StudentSurname = $conn->real_escape_string(trim($_POST['StudentSurname']));
     $StudentEmail = $conn->real_escape_string(trim($_POST['StudentEmail']));
