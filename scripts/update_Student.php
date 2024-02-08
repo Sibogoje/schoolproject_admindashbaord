@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // Prepare the SQL statement
-    $sql = "UPDATE `students` SET `name` = ?,  student_id` = ?, `surname` = ?, `phone`, `email` = ? WHERE `id` = ?";
+    $sql = "UPDATE `students` SET `name` = ?,  `student_id` = ?, `surname` = ?, `phone`, `email` = ? WHERE `id` = ?";
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement

@@ -135,7 +135,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </button>
       </div>
       <div class="modal-body">
-        <form id="editStaffForm">
+        <form id="editStudentForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
             <label for="editStudent_id">Roll #</label>
@@ -293,7 +293,7 @@ $(document).ready(function() {
   $.ajax({
     type: "POST",
     url: "scripts/update_Student.php", // Path to your update script
-    data: $("#editStaffForm").serialize(),
+    data: $("#editStudentForm").serialize(),
     dataType: "json",
     success: function(response) {
       // Handle success (e.g., close modal, refresh table)
