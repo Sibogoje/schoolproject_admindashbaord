@@ -138,6 +138,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <form id="editStaffForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
+            <label for="editStudent_id">Roll #</label>
+            <input type="text" class="form-control" id="editStudent_id" name="editStudent_id" required>
+          </div>
+          <div class="form-group">
             <label for="editName">Name</label>
             <input type="text" class="form-control" id="editName" name="editName" required>
           </div>
