@@ -146,17 +146,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <input type="text" class="form-control" id="editName" name="editName" required>
           </div>
           <div class="form-group">
+            <label for="editSurname">Surname</label>
+            <input type="text" class="form-control" id="editSurname" name="editSurname" required>
+          </div>
+          <div class="form-group">
             <label for="editEmail">Email</label>
             <input type="email" class="form-control" id="editEmail" name="editEmail" required>
           </div>
           <div class="form-group">
-            <label for="editRole">Role</label>
-            <select class="form-control" id="editRole" name="editRole" required>
-              <option value="" selected disabled>Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Faculty">Faculty</option>
-              <option value="Other">Other</option>
-            </select>
+            <label for="editPhone">Phone</label>
+            <input type="text" class="form-control" id="editPhone" name="editPhone" required>
           </div>
         </form>
       </div>
