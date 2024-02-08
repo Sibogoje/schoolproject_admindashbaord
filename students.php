@@ -58,7 +58,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
     <!-- Button to Open Add Staff Member Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">
-        Add New Staff
+        Add New Student
     </button>
 </div>
 
@@ -70,31 +70,35 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <table class="table mt-3">
         <thead>
           <tr>
-            <th scope="col">#</th>
+            <th scope="col">Roll #</th>
             <th scope="col">Name</th>
+            <th scope="col">Surname</th>
             <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Last_Login</th>
+            <th scope="col">phone</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
   <tbody>
   <?php
   // Query to select all staff members
-  $query = "SELECT id, name, email, role, last_login FROM staff ORDER BY name ASC";
+  $query = "SELECT * FROM students ORDER BY name ASC";
   $result = $conn->query($query);
 
   if ($result->num_rows > 0) {
       // Output data of each row
       while($row = $result->fetch_assoc()) {
           echo "<tr>";
-          echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
+          echo "<th scope='row'>" . htmlspecialchars($row['student_id']) . "</th>";
           echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['surname']) . "</td>";
           echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['role']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['last_login']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
           echo "<td>";
-          echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+          echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' 
+          data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' 
+          data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
+          data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' 
+          data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
 
           echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
