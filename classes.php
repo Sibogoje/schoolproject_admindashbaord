@@ -77,28 +77,31 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <tbody>
   <?php
   // Query to select all staff members
-  $query = "SELECT id, name, department, faculty FROM class ORDER BY name ASC";
+  $query = "SELECT c.id, c.name, d.name AS department_name, f.name AS faculty_name FROM class c
+  LEFT JOIN department d ON c.department_id = d.id
+  LEFT JOIN faculty f ON c.faculty_id = f.id
+  ORDER BY c.name ASC";
   $result = $conn->query($query);
 
   if ($result->num_rows > 0) {
-      // Output data of each row
-      while($row = $result->fetch_assoc()) {
-          echo "<tr>";
-          echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
-          echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['department']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['faculty']) . "</td>";
-          echo "<td>";
-          echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
-
-          echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
-
-          echo "</td>";
-          echo "</tr>";
-      }
-  } else {
-      echo "<tr><td colspan='6'>No staff found</td></tr>";
+  // Output data of each row
+  while($row = $result->fetch_assoc()) {
+  echo "<tr>";
+  echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
+  echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+  echo "<td>" . htmlspecialchars($row['department_name']) . "</td>"; // Updated
+  echo "<td>" . htmlspecialchars($row['faculty_name']) . "</td>"; // Updated
+  echo "<td>";
+  // Assuming you have a way to fetch 'email' and 'role', which are not mentioned in the SELECT
+  echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' data-role='" . htmlspecialchars($row['role'], ENT_QUOTES) . "' data-toggle='modal' data-target='#editStaffModal'> <i class='material-icons'>edit</i></button> ";
+  echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+  echo "</td>";
+  echo "</tr>";
   }
+  } else {
+  echo "<tr><td colspan='6'>No class found</td></tr>";
+  }
+
   ?>
 </tbody>
 
