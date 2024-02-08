@@ -77,7 +77,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <tbody>
   <?php
   // Query to select all staff members
-  $query = "SELECT id, name, email, role, last_login FROM staff ORDER BY name ASC";
+  $query = "SELECT id, name, department, faculty FROM class ORDER BY name ASC";
   $result = $conn->query($query);
 
   if ($result->num_rows > 0) {
