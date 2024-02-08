@@ -248,12 +248,16 @@ $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
     var name = $(this).data('name');
+    var surname = $(this).data('surname');
     var email = $(this).data('email');
     var student_id = $(this).data('student_id');
+    var phone = $(this).data('phone');
     
     $('#editId').val(id);
     $('#editName').val(name);
+    $('#editSurname').val(surname);
     $('#editEmail').val(email);
+    $('#phone').val(phone);
     $('#editStudent_id').val(student_id);
   });
 });
