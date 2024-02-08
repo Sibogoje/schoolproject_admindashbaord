@@ -124,8 +124,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   </div>
 
 
-<!-- Edit Staff Member Modal -->
-<div class="modal fade" id="editStaffModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
+<!-- Edit Student Modal -->
+<div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -138,27 +138,30 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <form id="editStaffForm">
           <input type="hidden" id="editId" name="editId">
           <div class="form-group">
+            <label for="editStudent_id">Roll #</label>
+            <input type="text" class="form-control" id="editStudent_id" name="editStudent_id" required>
+
+          <div class="form-group">
             <label for="editName">Name</label>
             <input type="text" class="form-control" id="editName" name="editName" required>
+          </div>
+          <div class="form-group">
+            <label for="editSurname">Surname</label>
+            <input type="text" class="form-control" id="editSurname" name="editSurname" required>
           </div>
           <div class="form-group">
             <label for="editEmail">Email</label>
             <input type="email" class="form-control" id="editEmail" name="editEmail" required>
           </div>
           <div class="form-group">
-            <label for="editRole">Role</label>
-            <select class="form-control" id="editRole" name="editRole" required>
-              <option value="" selected disabled>Select Role</option>
-              <option value="Admin">Admin</option>
-              <option value="Faculty">Faculty</option>
-              <option value="Other">Other</option>
-            </select>
+            <label for="editPhone">Phone</label>
+            <input type="text" class="form-control" id="editPhone" name="editPhone" required>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateStaffMember()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateStudent()">Save changes</button>
       </div>
     </div>
   </div>
@@ -166,7 +169,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
 
- <!-- Add Staff Member Modal -->
+ <!-- Add Student Member Modal -->
  <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -243,14 +246,18 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
+    var student_id = $(this).data('student_id');
     var name = $(this).data('name');
     var email = $(this).data('email');
-    var role = $(this).data('role');
+    var phone = $(this).data('phone');
+    var surname = $(this).data('surname');
     
     $('#editId').val(id);
     $('#editName').val(name);
     $('#editEmail').val(email);
-    $('#editRole').val(role);
+    $('#editPhone').val(phone);
+    $('#editSurname').val(surname);
+    $('#editStudent_id').val(student_id);
   });
 });
 </script>
@@ -260,7 +267,7 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('.deleteBtn').click(function() {
         var id = $(this).data('id');
-        if(confirm('Are you sure you want to delete this staff member?')) {
+        if(confirm('Are you sure you want to delete this student?')) {
             $.ajax({
                 type: "POST",
                 url: "scripts/delete_staff.php", // Path to your delete script
@@ -282,7 +289,7 @@ $(document).ready(function() {
 
 
 <script>
-  function updateStaffMember() {
+  function updateStudent() {
   $.ajax({
     type: "POST",
     url: "scripts/update_staff.php", // Path to your update script
