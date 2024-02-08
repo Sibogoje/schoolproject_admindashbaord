@@ -70,8 +70,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <th scope="col">Roll#</th>
             <th scope="col">F. Name</th>
             <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Last_Login</th>
+            <th scope="col">Class</th>
+            <th scope="col">Attendance %</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -85,8 +85,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       // Output data of each row
       while($row = $result->fetch_assoc()) {
           echo "<tr>";
-          echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
-          echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+          echo "<th scope='row'>" . htmlspecialchars($row['student_id']) . "</th>";
+          echo "<td>" . htmlspecialchars($row['name']) . " ".htmlspecialchars($row['surname'])."</td>";
           echo "<td>" . htmlspecialchars($row['email']) . "</td>";
           echo "<td>" . htmlspecialchars($row['role']) . "</td>";
           echo "<td>" . htmlspecialchars($row['last_login']) . "</td>";
