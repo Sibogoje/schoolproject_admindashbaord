@@ -167,14 +167,22 @@ if ($result->num_rows > 0) {
           </select>
           </div>
 
+          <?php
+          // Query to fetch department data
+          $query = "SELECT id, name FROM staff where role = 'Faculty' ORDER BY name ASC";
+          $result = $conn->query($query);
+          ?>
+
           <div class="form-group">
-            <label for="editFaculty">Faculty</label>
-            <select class="form-control" id="editFaculty" name="editFaculty" required>
-              <option value="" selected disabled>Select Faculty</option>
-              <option value="Admin">Admin</option>
-              <option value="Faculty">Faculty</option>
-              <option value="Other">Other</option>
-            </select>
+          <label for="editFaculty">Faculty</label>
+          <select class="form-control" id="editFaculty" name="editFaculty" required>
+            <option value="" selected disabled>Select Faculty</option>
+            <?php if ($result->num_rows > 0): ?>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
+                <?php endwhile; ?>
+            <?php endif; ?>
+          </select>
           </div>
         </form>
       </div>
