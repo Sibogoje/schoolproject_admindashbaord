@@ -249,12 +249,12 @@ $(document).ready(function(){
     var id = $(this).data('id');
     var name = $(this).data('name');
     var email = $(this).data('email');
-    var role = $(this).data('role');
+    var student_id = $(this).data('student_id');
     
     $('#editId').val(id);
     $('#editName').val(name);
     $('#editEmail').val(email);
-    $('#editRole').val(role);
+    $('#editStudent_id').val(student_id);
   });
 });
 </script>
