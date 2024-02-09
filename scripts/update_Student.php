@@ -7,7 +7,7 @@ require_once '../config.php'; // Adjust the path as needed
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Extract and sanitize the input data
     $id = $conn->real_escape_string(trim($_POST['editId']));
-    $editStudent_id = intval($_POST['editStudent_id']);
+    $editStudent_id = $conn->real_escape_string(trim($_POST['editStudent_id']));
     $editName = $conn->real_escape_string(trim($_POST['editName']));
     $editSurname = $conn->real_escape_string(trim($_POST['editSurname']));
     $editPhone = $conn->real_escape_string(trim($_POST['editPhone']));
