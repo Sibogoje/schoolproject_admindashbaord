@@ -295,11 +295,11 @@ $(document).ready(function() {
     url: "scripts/update_Student.php", // Path to your update script
     data: $("#editStudentForm").serialize(),
     dataType: "json",
-    success: function(response) {
-      alert(response.message);
+    success: function(response) {  
       // Handle success (e.g., close modal, refresh table)
       $('#editStaffModal').modal('hide');
-     // location.reload(); // Reload the page to see the changes
+      alert(response.message);
+      location.reload(); // Reload the page to see the changes
     },
     error: function() {
       alert(response.message);
