@@ -270,7 +270,7 @@ $(document).ready(function() {
         if(confirm('Are you sure you want to delete this staff member?')) {
             $.ajax({
                 type: "POST",
-                url: "scripts/delete_staff.php", // Path to your delete script
+                url: "scripts/delete_student.php", // Path to your delete script
                 data: { id: id },
                 dataType: "json",
                 success: function(response) {
