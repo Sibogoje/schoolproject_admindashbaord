@@ -267,7 +267,7 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('.deleteBtn').click(function() {
         var id = $(this).data('id');
-        if(confirm('Are you sure you want to delete this staff member?')) {
+        if(confirm('Are you sure you want to delete this Student?')) {
             $.ajax({
                 type: "POST",
                 url: "scripts/delete_student.php", // Path to your delete script
