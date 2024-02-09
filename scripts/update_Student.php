@@ -16,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // Prepare the SQL statement
-    $sql = "UPDATE `students` SET `name` = ?,  `surname` = ?,   `student_id ` = ?, `phone` = ?, `email` = ? WHERE `id` = ?";
+   // Notice the corrected `student_id` column name without the trailing space
+    $sql = "UPDATE `students` SET `name` = ?, `surname` = ?, `student_id` = ?, `phone` = ?, `email` = ? WHERE `id` = ?";
+
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement
