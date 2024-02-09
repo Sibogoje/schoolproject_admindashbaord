@@ -296,12 +296,14 @@ $(document).ready(function() {
     data: $("#editStudentForm").serialize(),
     dataType: "json",
     success: function(response) {
+      alert(response.message);
       // Handle success (e.g., close modal, refresh table)
       $('#editStaffModal').modal('hide');
-      location.reload(); // Reload the page to see the changes
+     // location.reload(); // Reload the page to see the changes
     },
     error: function() {
-      alert('Error updating staff member!');
+      alert(response.message);
+      //alert('Error updating staff member!');
     }
   });
 }
