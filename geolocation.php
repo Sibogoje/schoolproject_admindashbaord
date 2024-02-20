@@ -86,7 +86,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 // Assuming $conn is your database connection
 
 // Adjust the SQL query to join with the classes table to get the class name
-$sql = "SELECT geo_fence.id, class.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
+$sql = "SELECT geo_fence.id, geo_fence.class, class.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
 FROM `u747325399_project`.`geo_fence`
 JOIN `u747325399_project`.`class` ON geo_fence.class = class.id";
 
@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
         // Ensure data attributes are correct for the edit button
         echo "<button class='btn btn-success btn-sm editBtn' 
         data-id='" . $row['id'] . "' 
-        data-classname='" . htmlspecialchars($row['class_name'], ENT_QUOTES) . "'
+        data-classname='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
         data-a='" . htmlspecialchars($row['A'], ENT_QUOTES) . "'
         data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
         data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
@@ -147,21 +147,17 @@ if ($result->num_rows > 0) {
       <div class="modal-body">
         <form id="editClassForm">
           <input type="hidden" id="editId" name="editId">
-          <div class="form-group">
-            <label for="editName">Name</label>
-            <input type="text" class="form-control" id="editName" name="editName" required>
-          </div>
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM department ORDER BY name ASC";
+          $query = "SELECT id, name FROM class ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
           <div class="form-group">
-          <label for="editdepartment">Department</label>
-          <select class="form-control" id="editDepartment" name="editDepartment" required>
-            <option value="" selected disabled>Select Department</option>
+          <label for="editClass">Class</label>
+          <select class="form-control" id="editClass" name="editClass" required>
+            <option value="" selected disabled>Select Class</option>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
@@ -170,28 +166,30 @@ if ($result->num_rows > 0) {
           </select>
           </div>
 
-          <?php
-          // Query to fetch department data
-          $query = "SELECT id, name FROM staff where role = 'Faculty' ORDER BY name ASC";
-          $result = $conn->query($query);
-          ?>
+          <div class="form-group">
+            <label for="editA">Point A</label>
+            <input type="text" class="form-control" id="editA" name="editA" required>
+          </div>
 
           <div class="form-group">
-          <label for="editFaculty">Faculty</label>
-          <select class="form-control" id="editFaculty" name="editFaculty" required>
-            <option value="" selected disabled>Select Faculty</option>
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
-                <?php endwhile; ?>
-            <?php endif; ?>
-          </select>
+            <label for="editB">Point B</label>
+            <input type="text" class="form-control" id="editB" name="editB" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editC">Point C</label>
+            <input type="text" class="form-control" id="editC" name="editC" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editD">Point D</label>
+            <input type="text" class="form-control" id="editD" name="editD" required>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateClass()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateFence()">Save changes</button>
       </div>
     </div>
   </div>
@@ -296,14 +294,19 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
-    var name = $(this).data('name');
-    var department = $(this).data('department');
-    var faculty = $(this).data('faculty');
+    var A = $(this).data('a');
+    var B = $(this).data('b');
+    var C = $(this).data('c');
+    var D = $(this).data('d');
+    var class = $(this).data('classname');
+
     
     $('#editId').val(id);
-    $('#editName').val(name);
-    $('#editDepartment').val(department);
-    $('#editFaculty').val(faculty);
+    $('#editA').val(A);
+    $('#editB').val(B);
+    $('#editC').val(C);
+    $('#editD').val(D);
+    $('#editClass').val(class);
   });
 });
 </script>
@@ -335,10 +338,10 @@ $(document).ready(function() {
 
 
 <script>
-  function updateClass() {
+  function updateFence() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_class.php", // Path to your update script
+    url: "scripts/update_fence.php", // Path to your update script
     data: $("#editClassForm").serialize(),
     dataType: "json",
     success: function(response) {
