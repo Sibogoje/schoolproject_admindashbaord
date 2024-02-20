@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editStaffModalLabel">Edit Class</h5>
+        <h5 class="modal-title" id="editStaffModalLabel">Edit Classroom</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -165,28 +165,11 @@ if ($result->num_rows > 0) {
           </select>
           </div>
 
-          <?php
-          // Query to fetch department data
-          $query = "SELECT id, name FROM staff where role = 'Faculty' ORDER BY name ASC";
-          $result = $conn->query($query);
-          ?>
-
-          <div class="form-group">
-          <label for="editFaculty">Faculty</label>
-          <select class="form-control" id="editFaculty" name="editFaculty" required>
-            <option value="" selected disabled>Select Faculty</option>
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
-                <?php endwhile; ?>
-            <?php endif; ?>
-          </select>
-          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateClass()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateClassroom()">Save changes</button>
       </div>
     </div>
   </div>
@@ -233,7 +216,7 @@ if ($result->num_rows > 0) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addClassroom()">Add CLass</button>
+        <button type="button" class="btn btn-primary" onclick="addClassroom()">Add CLassroom</button>
       </div>
     </div>
   </div>
@@ -276,12 +259,12 @@ $(document).ready(function(){
     var id = $(this).data('id');
     var name = $(this).data('name');
     var department = $(this).data('department');
-    var faculty = $(this).data('faculty');
+
     
     $('#editId').val(id);
     $('#editName').val(name);
     $('#editDepartment').val(department);
-    $('#editFaculty').val(faculty);
+
   });
 });
 </script>
@@ -313,10 +296,10 @@ $(document).ready(function() {
 
 
 <script>
-  function updateClass() {
+  function updateClassroom() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_class.php", // Path to your update script
+    url: "scripts/update_classroom.php", // Path to your update script
     data: $("#editClassForm").serialize(),
     dataType: "json",
     success: function(response) {
