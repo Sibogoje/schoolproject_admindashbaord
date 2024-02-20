@@ -45,6 +45,14 @@
               </a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="https://liquag.com/dev/school/admin/courses.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Courses</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link" href="https://liquag.com/dev/school/admin/classes.php" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
