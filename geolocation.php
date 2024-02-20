@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
         data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
         data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
         data-d='" . htmlspecialchars($row['D'], ENT_QUOTES) . "'
-        data-toggle='modal' data-target='#editGeoFenceModal'> <i class='material-icons'>edit</i></button> ";
+        data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
         echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
         echo "</td>";
         echo "</tr>";
@@ -300,7 +300,6 @@ $(document).ready(function(){
     var D = $(this).data('d');
     var classid = $(this).data('classid');
 
-    
     $('#editId').val(id);
     $('#editA').val(A);
     $('#editB').val(B);
