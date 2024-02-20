@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $D = $conn->real_escape_string(trim($_POST['D']));
 
     // Prepare an INSERT statement
-    $query = "INSERT INTO class (class, A, B, C, D) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO geo_fence (class, A, B, C, D) VALUES (?, ?, ?, ?, ?)";
 
     if($stmt = $conn->prepare($query)) {
         // Bind variables to the prepared statement as parameters
