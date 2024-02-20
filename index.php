@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <?php
 // Include database connection
 // Fetch classes from the database
-$sql = "SELECT id, class_name FROM classes"; // Adjust 'classes' and 'class_name' according to your actual table and column names
+$sql = "SELECT id, name FROM class"; // Adjust 'classes' and 'class_name' according to your actual table and column names
 $result = $conn->query($sql);
 ?>
 
@@ -62,7 +62,7 @@ $result = $conn->query($sql);
                 <div class="col-md-4">
                   <div class="card mt-3" onclick="window.location.href='classdetail.php?name=<?= $row['id']; ?>'">
                     <div class="card-body">
-                      <h5 class="card-title"><?= htmlspecialchars($row['class_name']); ?></h5>
+                      <h5 class="card-title"><?= htmlspecialchars($row['name']); ?></h5>
                     </div>
                   </div>
                 </div>
