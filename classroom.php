@@ -78,15 +78,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </thead>
   <tbody>
 
-
   <?php
-// Adjust your query
+// Adjust your query to join the classroom table with the department table
 $query = "SELECT 
-id, name, department
+            classroom.id, 
+            classroom.name, 
+            classroom.department,
+            department.department_name as department_name
           FROM 
-            classroom 
+            classroom
+          INNER JOIN department ON classroom.department = department.id
           ORDER BY 
-            name ASC";
+            classroom.name ASC";
 
 $result = $conn->query($query);
 
@@ -95,7 +98,8 @@ if ($result->num_rows > 0) {
         echo "<tr>";
         echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
         echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['department']) . "</td>";
+        // Display the department name instead of the department ID
+        echo "<td>" . htmlspecialchars($row['department_name']) . "</td>";
         echo "<td>";
         // Modify button attributes as needed
         echo "<button class='btn btn-success btn-sm editBtn' 
@@ -108,9 +112,10 @@ if ($result->num_rows > 0) {
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='5'>No class found</td></tr>";
+    echo "<tr><td colspan='4'>No class found</td></tr>";
 }
 ?>
+
 
 </tbody>
 
