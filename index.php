@@ -52,27 +52,28 @@ $result = $conn->query($sql);
     <!--  Header End -->
     
     <div class="container-fluid">
-      <div class="card">
-        <div class="card-body style='background: #f8f8f8;'">
-          <!-- Classes Cards -->
-          <?php if ($result->num_rows > 0): ?>
-            <div class="row">
-              <?php while($row = $result->fetch_assoc()): ?>
-                <div class="col-md-4">
-                  <div class="card mt-3" onclick="window.location.href='classdetail.php?name=<?= $row['id']; ?>'">
-                    <div class="card-body">
-                      <h5 class="card-title"><?= htmlspecialchars($row['name']); ?></h5>
-                    </div>
-                  </div>
+  <div class="card" style="background: #f8f8f8;">
+    <div class="card-body">
+      <!-- Classes Cards -->
+      <?php if ($result->num_rows > 0): ?>
+        <div class="row">
+          <?php while($row = $result->fetch_assoc()): ?>
+            <div class="col-md-4">
+              <div class="card mt-3" style="cursor: pointer; background-color: grey;" onclick="window.location.href='classdetail.php?name=<?= $row['id']; ?>'">
+                <div class="card-body">
+                  <h5 class="card-title"><?= htmlspecialchars($row['name']); ?></h5>
                 </div>
-              <?php endwhile; ?>
+              </div>
             </div>
-          <?php else: ?>
-            <p>No classes found.</p>
-          <?php endif; ?>
+          <?php endwhile; ?>
         </div>
-      </div>
+      <?php else: ?>
+        <p>No classes found.</p>
+      <?php endif; ?>
     </div>
+  </div>
+</div>
+
   </div>
 </div>
 
