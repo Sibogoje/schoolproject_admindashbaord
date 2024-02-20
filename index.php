@@ -53,7 +53,7 @@ $result = $conn->query($sql);
     
     <div class="container-fluid">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body style='background-color: #f8f8f8;'">
           <!-- Classes Cards -->
           <?php if ($result->num_rows > 0): ?>
             <div class="row">
