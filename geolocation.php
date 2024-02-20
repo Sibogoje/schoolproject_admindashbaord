@@ -86,9 +86,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 // Assuming $conn is your database connection
 
 // Adjust the SQL query to join with the classes table to get the class name
-$sql = "SELECT geo_fence.id, geo_fence.class, class.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
+$sql = "SELECT geo_fence.id, geo_fence.class, classroom.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
 FROM `u747325399_project`.`geo_fence`
-JOIN `u747325399_project`.`class` ON geo_fence.class = class.id";
+JOIN `u747325399_project`.`classroom` ON geo_fence.class = classroom.id";
 
 $result = $conn->query($sql);
 
@@ -150,7 +150,7 @@ if ($result->num_rows > 0) {
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM class ORDER BY name ASC";
+          $query = "SELECT id, name FROM classroom ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
@@ -213,12 +213,12 @@ if ($result->num_rows > 0) {
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM class ORDER BY name ASC";
+          $query = "SELECT id, name FROM classrom ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
           <div class="form-group">
-          <label for="class">Department</label>
+          <label for="class">Classroom</label>
           <select class="form-control" id="class" name="class" required>
             <option value="" selected disabled>Select Class</option>
             <?php if ($result->num_rows > 0): ?>
