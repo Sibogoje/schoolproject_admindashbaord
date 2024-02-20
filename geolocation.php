@@ -213,7 +213,7 @@ if ($result->num_rows > 0) {
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM classrom ORDER BY name ASC";
+          $query = "SELECT id, name FROM classroom ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
