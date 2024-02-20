@@ -85,23 +85,28 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <?php
 // Assuming $conn is your database connection
 
-$sql = "SELECT `id`, `class`, `A`, `B`, `C`, `D` FROM `u747325399_project`.`geo_fence`";
+// Adjust the SQL query to join with the classes table to get the class name
+$sql = "SELECT geo_fence.id, class.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
+FROM `u747325399_project`.`geo_fence`
+JOIN `u747325399_project`.`class` ON geo_fence.class = class.id";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
-        echo "<td>" . htmlspecialchars($row['class']) . "</td>";
+        // Display the class name instead of class ID
+        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
         echo "<td>" . htmlspecialchars($row['A']) . "</td>";
         echo "<td>" . htmlspecialchars($row['B']) . "</td>";
         echo "<td>" . htmlspecialchars($row['C']) . "</td>";
         echo "<td>" . htmlspecialchars($row['D']) . "</td>";
         echo "<td>";
-        // Modify button attributes as needed
+        // Ensure data attributes are correct for the edit button
         echo "<button class='btn btn-success btn-sm editBtn' 
         data-id='" . $row['id'] . "' 
-        data-class='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
+        data-classname='" . htmlspecialchars($row['class_name'], ENT_QUOTES) . "'
         data-a='" . htmlspecialchars($row['A'], ENT_QUOTES) . "'
         data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
         data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
