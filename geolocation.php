@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
         // Ensure data attributes are correct for the edit button
         echo "<button class='btn btn-success btn-sm editBtn' 
         data-id='" . $row['id'] . "' 
-        data-classname='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
+        data-classid='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
         data-a='" . htmlspecialchars($row['A'], ENT_QUOTES) . "'
         data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
         data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
@@ -298,7 +298,7 @@ $(document).ready(function(){
     var B = $(this).data('b');
     var C = $(this).data('c');
     var D = $(this).data('d');
-    var class = $(this).data('classname');
+    var class = $(this).data('classid');
 
     
     $('#editId').val(id);
