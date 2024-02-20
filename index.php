@@ -29,29 +29,54 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 </head>
 
 <body>
-  <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <!-- Sidebar Start -->
-    <?php include 'sidebar.php';?>
 
-    <!--  Sidebar End -->
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
-      <?php include 'header.php';?>
+<?php
+// Include database connection
+// Fetch classes from the database
+$sql = "SELECT id, class_name FROM classes"; // Adjust 'classes' and 'class_name' according to your actual table and column names
+$result = $conn->query($sql);
+?>
 
-      <!--  Header End -->
-      <div class="container-fluid">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Home</h5>
-            <p class="mb-0">This is a sample page </p>
-          </div>
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+  <!-- Sidebar Start -->
+  <?php include 'sidebar.php'; ?>
+  <!--  Sidebar End -->
+  
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <!--  Header Start -->
+    <?php include 'header.php'; ?>
+    <!--  Header End -->
+    
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold mb-4">Home</h5>
+          <p class="mb-0">This is a sample page </p>
+          <!-- Classes Cards -->
+          <?php if ($result->num_rows > 0): ?>
+            <div class="row">
+              <?php while($row = $result->fetch_assoc()): ?>
+                <div class="col-md-4">
+                  <div class="card mt-3" onclick="window.location.href='classdetail.php?name=<?= $row['id']; ?>'">
+                    <div class="card-body">
+                      <h5 class="card-title"><?= htmlspecialchars($row['class_name']); ?></h5>
+                    </div>
+                  </div>
+                </div>
+              <?php endwhile; ?>
+            </div>
+          <?php else: ?>
+            <p>No classes found.</p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
   </div>
+</div>
+
   <script src="assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/sidebarmenu.js"></script>
