@@ -82,7 +82,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   <?php
 // Adjust your query
 $query = "SELECT 
-name, department
+id, name, department
           FROM 
             classroom 
           ORDER BY 
