@@ -84,7 +84,7 @@ $query = "SELECT
             classroom.id, 
             classroom.name, 
             classroom.department,
-            department.department_name as department_name
+            department.name as department_name
           FROM 
             classroom
           INNER JOIN department ON classroom.department = department.id
