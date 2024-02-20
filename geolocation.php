@@ -76,7 +76,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <th scope="col">B</th>
             <th scope="col">C</th>
             <th scope="col">D</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
   <tbody>
