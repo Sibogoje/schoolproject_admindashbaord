@@ -54,7 +54,6 @@ $result = $conn->query($sql);
     <div class="container-fluid">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title fw-semibold mb-4">Home</h5>
           <!-- Classes Cards -->
           <?php if ($result->num_rows > 0): ?>
             <div class="row">
