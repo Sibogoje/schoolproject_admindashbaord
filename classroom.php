@@ -84,7 +84,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $query = "SELECT 
 name, department
           FROM 
-            class 
+            classroom 
           ORDER BY 
             name ASC";
 
