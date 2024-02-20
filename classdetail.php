@@ -31,13 +31,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 <body>
 
-<?php
-// Include database connection
-// Fetch classes from the database
-$sql = "SELECT id, name FROM class"; // Adjust 'classes' and 'class_name' according to your actual table and column names
-$result = $conn->query($sql);
-?>
-
 <!--  Body Wrapper -->
 <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
   data-sidebar-position="fixed" data-header-position="fixed">
@@ -54,22 +47,8 @@ $result = $conn->query($sql);
     <div class="container-fluid">
   <div class="card" style="background: #f8f8f8;">
     <div class="card-body">
-      <!-- Classes Cards -->
-      <?php if ($result->num_rows > 0): ?>
-        <div class="row">
-          <?php while($row = $result->fetch_assoc()): ?>
-            <div class="col-md-4">
-              <div class="card mt-3" style="cursor: pointer; background-color: grey;" onclick="window.location.href='classdetail.php?name=<?= $row['id']; ?>'">
-                <div class="card-body">
-                  <h5 class="card-title"><?= htmlspecialchars($row['name']); ?></h5>
-                </div>
-              </div>
-            </div>
-          <?php endwhile; ?>
-        </div>
-      <?php else: ?>
-        <p>No classes found.</p>
-      <?php endif; ?>
+        <h5> Class Attendance </h5>
+
     </div>
   </div>
 </div>
