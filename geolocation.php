@@ -298,7 +298,7 @@ $(document).ready(function(){
     var B = $(this).data('b');
     var C = $(this).data('c');
     var D = $(this).data('d');
-    var class = $(this).data('classid');
+    var classid = $(this).data('classid');
 
     
     $('#editId').val(id);
@@ -306,7 +306,7 @@ $(document).ready(function(){
     $('#editB').val(B);
     $('#editC').val(C);
     $('#editD').val(D);
-    $('#editClass').val(class);
+    $('#editClass').val(classid);
   });
 });
 </script>
