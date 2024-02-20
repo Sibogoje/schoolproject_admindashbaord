@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editStaffModalLabel">Edit Class</h5>
+        <h5 class="modal-title" id="editStaffModalLabel">Edit Fence</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -199,28 +199,25 @@ if ($result->num_rows > 0) {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addStaffModalLabel">Add New Class</h5>
+        <h5 class="modal-title" id="addStaffModalLabel">Add New Fence</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form id="addClassForm">
-          <div class="form-group">
-            <label for="className">Class Name</label>
-            <input type="text" class="form-control" id="className" name="className" required>
-          </div>
+
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM department ORDER BY name ASC";
+          $query = "SELECT id, name FROM class ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
           <div class="form-group">
-          <label for="department">Department</label>
-          <select class="form-control" id="department" name="department" required>
-            <option value="" selected disabled>Select Department</option>
+          <label for="class">Department</label>
+          <select class="form-control" id="class" name="class" required>
+            <option value="" selected disabled>Select Class</option>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
@@ -229,31 +226,31 @@ if ($result->num_rows > 0) {
           </select>
           </div>
 
-          <?php
-          // Query to fetch department data
-          $query = "SELECT id, name FROM staff where role = 'Faculty' ORDER BY name ASC";
-          $result = $conn->query($query);
-          ?>
-
           <div class="form-group">
-          <label for="faculty">Faculty</label>
-          <select class="form-control" id="faculty" name="faculty" required>
-            <option value="" selected disabled>Select Faculty</option>
-            <?php if ($result->num_rows > 0): ?>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <option value="<?= htmlspecialchars($row['id']); ?>"><?= htmlspecialchars($row['name']); ?></option>
-                <?php endwhile; ?>
-            <?php endif; ?>
-          </select>
+            <label for="A">Point A</label>
+            <input type="text" class="form-control" id="A" name="A" required>
           </div>
 
+          <div class="form-group">
+            <label for="B">Point B</label>
+            <input type="text" class="form-control" id="B" name="B" required>
+          </div>
 
+          <div class="form-group">
+            <label for="C">Point C</label>
+            <input type="text" class="form-control" id="C" name="C" required>
+          </div>
+
+          <div class="form-group">
+            <label for="D">Point D</label>
+            <input type="text" class="form-control" id="D" name="D" required>
+          </div>
 
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addClass()">Add CLass</button>
+        <button type="button" class="btn btn-primary" onclick="addFence()">Add Fence</button>
       </div>
     </div>
   </div>
@@ -352,14 +349,14 @@ $(document).ready(function() {
 
 </script>
 <script>
-function addClass() {
+function addFence() {
   // Example function to handle adding a staff member
   // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
   console.log('Adding Class...');
   
   $.ajax({
     type: "POST",
-    url: "scripts/add_class.php",
+    url: "scripts/add_fence.php",
     data: $("#addClassForm").serialize(),
     dataType: "json",
     success: function(response) {
