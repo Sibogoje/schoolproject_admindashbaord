@@ -60,7 +60,7 @@ $result = $conn->query($sql);
         <div class="row">
           <?php while($row = $result->fetch_assoc()): ?>
             <div class="col-md-4">
-              <div class="card mt-3" style="cursor: pointer; background-color: grey;" onclick="window.location.href='classdetail.php?n=<?= encrypt($row['id']); ?>'">
+              <div class="card mt-3" style="cursor: pointer; background-color: grey;" onclick="window.location.href='classdetail.php?id=<?= encrypt($row['id']); ?>'">
                 <div class="card-body">
                   <h5 class="card-title"><?= htmlspecialchars($row['name'])." ".htmlspecialchars($row['year']); ?></h5>
                 </div>
