@@ -355,10 +355,10 @@ $(document).ready(function(){
 $(document).ready(function() {
     $('.deleteBtn').click(function() {
         var id = $(this).data('id');
-        if(confirm('Are you sure you want to delete this class?')) {
+        if(confirm('Are you sure you want to delete this Course?')) {
             $.ajax({
                 type: "POST",
-                url: "scripts/delete_class.php", // Path to your delete script
+                url: "scripts/delete_course.php", // Path to your delete script
                 data: { id: id },
                 dataType: "json",
                 success: function(response) {
