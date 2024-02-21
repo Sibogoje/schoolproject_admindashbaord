@@ -45,10 +45,89 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <?php include 'header.php'; ?>
     <!--  Header End -->
     
-    <div class="container-fluid">
-  <div class="card" style="background: #f8f8f8;">
-    <div class="card-body">
-        <h5> Class Attendance </h5>
+     <!--  Header End -->
+     <div class="container-fluid">
+  <div class="card" style="background: #f5f5f5;">
+      <div class="card-body w-100">
+
+      <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
+        <div class="col-lg-12"> <!-- Adjust the column size as needed -->
+            <div class="input-group">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search Geo_fence..." id="searchInput">
+            </div>
+        </div>
+    </div>
+
+    <!-- Button to Open Add Staff Member Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">
+        Add New Fence
+    </button>
+</div>
+
+
+   
+
+    <div class="table-responsive">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Subject</th>
+            <th scope="col">A</th>
+            <th scope="col">B</th>
+            <th scope="col">C</th>
+            <th scope="col">D</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+  <tbody>
+
+
+  <?php
+// Assuming $conn is your database connection
+
+// Adjust the SQL query to join with the classes table to get the class name
+$sql = "SELECT geo_fence.id, geo_fence.class, classroom.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
+FROM `u747325399_project`.`geo_fence`
+JOIN `u747325399_project`.`classroom` ON geo_fence.class = classroom.id";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
+        // Display the class name instead of class ID
+        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['A']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['B']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['C']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['D']) . "</td>";
+        echo "<td>";
+        // Ensure data attributes are correct for the edit button
+        echo "<button class='btn btn-success btn-sm editBtn' 
+        data-id='" . $row['id'] . "' 
+        data-classid='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
+        data-a='" . htmlspecialchars($row['A'], ENT_QUOTES) . "'
+        data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
+        data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
+        data-d='" . htmlspecialchars($row['D'], ENT_QUOTES) . "'
+        data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
+        echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='7'>No Geo Fence Found</td></tr>";
+}
+?>
+
+
+</tbody>
+
+      </table>
+      </div>
 
     </div>
   </div>
