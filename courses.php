@@ -176,13 +176,13 @@ if ($result->num_rows > 0) {
 
           <?php
           // Query to fetch department data
-          $query = "SELECT id, name FROM staff where role = 'Faculty' ORDER BY name ASC";
+          $query = "SELECT id, name FROM classroom ORDER BY name ASC";
           $result = $conn->query($query);
           ?>
 
           <div class="form-group">
-          <label for="editFaculty">Faculty</label>
-          <select class="form-control" id="editFaculty" name="editFaculty" required>
+          <label for="editClassroom">Faculty</label>
+          <select class="form-control" id="editClassroom" name="editClassroom" required>
             <option value="" selected disabled>Select Faculty</option>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($row = $result->fetch_assoc()): ?>
@@ -191,11 +191,27 @@ if ($result->num_rows > 0) {
             <?php endif; ?>
           </select>
           </div>
+
+          <!-- add select for year -->
+            <div class="form-group">
+            <label for="editYear">Year</label>
+            <select class="form-control" id="editYear" name="editYear" required>
+              <option value="" selected disabled>Select Year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+            </div>
+
+
+
+
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="updateClass()">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="updateCourse()">Save changes</button>
       </div>
     </div>
   </div>
@@ -318,12 +334,14 @@ $(document).ready(function(){
     var id = $(this).data('id');
     var name = $(this).data('name');
     var department = $(this).data('department');
-    var faculty = $(this).data('faculty');
+    var classroom = $(this).data('classroom');
+    var year = $(this).data('year');
     
     $('#editId').val(id);
     $('#editName').val(name);
     $('#editDepartment').val(department);
-    $('#editFaculty').val(faculty);
+    $('#editClassroom').val(classroom);
+    $('#editYear').val(year);
   });
 });
 </script>
@@ -355,10 +373,10 @@ $(document).ready(function() {
 
 
 <script>
-  function updateClass() {
+  function updateCourse() {
   $.ajax({
     type: "POST",
-    url: "scripts/update_class.php", // Path to your update script
+    url: "scripts/update_course.php", // Path to your update script
     data: $("#editClassForm").serialize(),
     dataType: "json",
     success: function(response) {
