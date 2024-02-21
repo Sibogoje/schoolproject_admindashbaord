@@ -81,40 +81,52 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         </thead>
   <tbody>
   <?php
-  // Query to select all staff members
-  $query = "SELECT * FROM students ORDER BY name ASC";
-  $result = $conn->query($query);
+// Adjust your query to join the students table with the courses table
+$query = "SELECT 
+            students.student_id, 
+            students.name, 
+            students.surname, 
+            students.email, 
+            students.phone, 
+            courses.name as course_name,
+            students.id
+          FROM 
+            students
+          INNER JOIN courses ON students.course = courses.id
+          ORDER BY 
+            students.name ASC";
 
-  if ($result->num_rows > 0) {
-      // Output data of each row
-      while($row = $result->fetch_assoc()) {
-          echo "<tr>";
-          echo "<th scope='row'>" . htmlspecialchars($row['student_id']) . "</th>";
-          echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['surname']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
-          echo "<td>" . htmlspecialchars($row['course']) . "</td>";
-          echo "<td>";
+$result = $conn->query($query);
 
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<th scope='row'>" . htmlspecialchars($row['student_id']) . "</th>";
+        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['surname']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['course_name']) . "</td>"; // Display the course name
+        echo "<td>";
 
-          echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' 
-          data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' 
-          data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
-          data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
-          data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
-          data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
-          data-course='" . htmlspecialchars($row['course'], ENT_QUOTES) . "'
-          data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
-          echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+        echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' 
+        data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' 
+        data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
+        data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
+        data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
+        data-course='" . htmlspecialchars($row['course'], ENT_QUOTES) . "' // Pass the course name
+        data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
+        echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
-          echo "</td>";
-          echo "</tr>";
-      }
-  } else {
-      echo "<tr><td colspan='6'>No Students found</td></tr>";
-  }
-  ?>
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='7'>No Students found</td></tr>";
+}
+?>
+
 </tbody>
 
       </table>
