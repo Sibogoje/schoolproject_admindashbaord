@@ -23,6 +23,7 @@
 
                   // Check if pageName is empty or not, set a default value if it is
                   if (!pageName || pageName === 'Index') pageName = "Home"; // Default page name, treating 'Index' as 'Home'
+                  if (pageName === 'Classdetail') pageName = "Class Details"; //
 
                   // Set the extracted page name to the navigation item
                   document.getElementById('dynamicPageName').textContent = pageName;
