@@ -34,7 +34,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <?php
 // Include database connection
 // Fetch classes from the database
-$sql = "SELECT id, name FROM class"; // Adjust 'classes' and 'class_name' according to your actual table and column names
+$sql = "SELECT id, name FROM courses"; // Adjust 'classes' and 'class_name' according to your actual table and column names
 $result = $conn->query($sql);
 ?>
 
