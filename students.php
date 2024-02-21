@@ -75,6 +75,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <th scope="col">Surname</th>
             <th scope="col">Email</th>
             <th scope="col">phone</th>
+            <th scope="col">Course</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -93,6 +94,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echo "<td>" . htmlspecialchars($row['surname']) . "</td>";
           echo "<td>" . htmlspecialchars($row['email']) . "</td>";
           echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
+          ech0 "<td>" . htmlspecialchars($row['course']) . "</td>";
           echo "<td>";
 
 
@@ -102,6 +104,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
           data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
           data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
+          data-course='" . htmlspecialchars($row['course'], ENT_QUOTES) . "'
           data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
           echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
