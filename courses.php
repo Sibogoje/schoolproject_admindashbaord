@@ -205,8 +205,8 @@ if ($result->num_rows > 0) {
       <div class="modal-body">
         <form id="addClassForm">
           <div class="form-group">
-            <label for="className">Course Name</label>
-            <input type="text" class="form-control" id="className" name="className" required>
+            <label for="courseName">Course Name</label>
+            <input type="text" class="form-control" id="courseName" name="courseName" required>
           </div>
 
           <?php
@@ -256,7 +256,7 @@ if ($result->num_rows > 0) {
               <option value="4">4th Year</option>
             </select>
             </div>
-            
+
 
 
 
@@ -264,7 +264,7 @@ if ($result->num_rows > 0) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="addClass()">Add CLass</button>
+        <button type="button" class="btn btn-primary" onclick="addCourse()">Add CLass</button>
       </div>
     </div>
   </div>
@@ -363,14 +363,14 @@ $(document).ready(function() {
 
 </script>
 <script>
-function addClass() {
+function addCourse() {
   // Example function to handle adding a staff member
   // In practice, you would collect form data and send it to a server-side script (e.g., via AJAX)
   console.log('Adding Class...');
   
   $.ajax({
     type: "POST",
-    url: "scripts/add_class.php",
+    url: "scripts/add_course.php",
     data: $("#addClassForm").serialize(),
     dataType: "json",
     success: function(response) {
