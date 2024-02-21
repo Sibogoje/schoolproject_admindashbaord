@@ -61,8 +61,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
 
     <!-- Button to Open Add Staff Member Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassModal">
-        Add New Fence
+    <button type="button" class="btn btn-primary" data-toggle="" data-target="#addClassModal">
+        Visualise
     </button>
 </div>
 
