@@ -89,7 +89,8 @@ $query = "SELECT
             students.email, 
             students.phone, 
             courses.name as course_name,
-            students.id
+            students.id,
+            course
           FROM 
             students
           INNER JOIN courses ON students.course = courses.id
@@ -115,7 +116,7 @@ if ($result->num_rows > 0) {
         data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
         data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
         data-phone='" . htmlspecialchars($row['phone'], ENT_QUOTES) . "' 
-        data-course='" . htmlspecialchars($row['course'], ENT_QUOTES) . "' // Pass the course name
+        data-course='" . htmlspecialchars($row['course'], ENT_QUOTES) . "'
         data-toggle='modal' data-target='#editStudentModal'> <i class='material-icons'>edit</i></button> ";
         echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
 
