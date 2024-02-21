@@ -94,7 +94,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           echo "<td>" . htmlspecialchars($row['surname']) . "</td>";
           echo "<td>" . htmlspecialchars($row['email']) . "</td>";
           echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
-          ech0 "<td>" . htmlspecialchars($row['course']) . "</td>";
+          echo "<td>" . htmlspecialchars($row['course']) . "</td>";
           echo "<td>";
 
 
