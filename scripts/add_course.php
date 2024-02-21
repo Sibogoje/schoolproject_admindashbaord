@@ -25,12 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Attempt to execute the prepared statement
         if($stmt->execute()) {
-            // Respond with a success message
             echo json_encode(array("status" => "success", "message" => "Course added successfully."));
         } else {
-            // Respond with an error message
-            echo json_encode(array("status" => "error", "message" => "Error adding Course."));
+            // Include specific MySQL error
+            echo json_encode(array("status" => "error", "message" => "Error adding Course: " . $stmt->error));
         }
+        
 
         // Close statement
         $stmt->close();
