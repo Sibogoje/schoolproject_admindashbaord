@@ -112,6 +112,7 @@ if ($result->num_rows > 0) {
         echo "<td>";
 
         echo "<button class='btn btn-success btn-sm editBtn' data-id='" . $row['id'] . "' 
+        data-student_id='" . htmlspecialchars($row['student_id'], ENT_QUOTES) . "'
         data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "' 
         data-surname='" . htmlspecialchars($row['surname'], ENT_QUOTES) . "'
         data-email='" . htmlspecialchars($row['email'], ENT_QUOTES) . "' 
@@ -304,6 +305,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.editBtn').click(function(){
     var id = $(this).data('id');
+    var student_id = $(this).data('student_id');
     var name = $(this).data('name');
     var surname = $(this).data('surname');
     var email = $(this).data('email');
@@ -312,6 +314,7 @@ $(document).ready(function(){
     var course = $(this).data('course');
     
     $('#editId').val(id);
+    $('#editStudent_id').val(student_id);
     $('#editName').val(name);
     $('#editSurname').val(surname);
     $('#editEmail').val(email);
