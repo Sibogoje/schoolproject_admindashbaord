@@ -12,17 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $editSurname = $conn->real_escape_string(trim($_POST['editSurname']));
     $editPhone = $conn->real_escape_string(trim($_POST['editPhone']));
     $editEmail = $conn->real_escape_string(trim($_POST['editEmail']));
+    $editCourse = $conn->real_escape_string(trim($_POST['editCourse']));
 
 
 
     // Prepare the SQL statement
    // Notice the corrected `student_id` column name without the trailing space
-    $sql = "UPDATE `students` SET `name` = ?, `surname` = ?, `student_id` = ?, `phone` = ?, `email` = ? WHERE `id` = ?";
+    $sql = "UPDATE `students` SET `name` = ?, `surname` = ?, `student_id` = ?, `phone` = ?, `email` = ?, `course` = ? WHERE `id` = ?";
 
 
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters to the prepared statement
-        $stmt->bind_param("ssissi", $editName,  $editSurname, $editStudent_id, $editPhone, $editEmail, $id);
+        $stmt->bind_param("ssisssi", $editName,  $editSurname, $editStudent_id, $editPhone, $editEmail, $editCourse, $id);
 
         // Attempt to execute the prepared statement
         if ($stmt->execute()) {

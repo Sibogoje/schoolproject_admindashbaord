@@ -51,7 +51,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
-                <input type="text" style="background: white;" class="form-control" placeholder="Search staff..." id="searchInput">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search student..." id="searchInput">
             </div>
         </div>
     </div>
@@ -172,6 +172,27 @@ if ($result->num_rows > 0) {
             <label for="editPhone">Phone</label>
             <input type="text" class="form-control" id="editPhone" name="editPhone" required>
           </div>
+
+          <!-- add select for courses -->
+          <div class="form-group">
+            <label for="editCourse">Course</label>
+            <select class="form-control" id="editCourse" name="editCourse" required>
+              <option value="">Select Course</option>
+              <?php
+              // Fetch courses from the database
+              $sql = "SELECT * FROM courses"; // Adjust 'courses' according to your actual table name
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                      echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['name']) . "</option>";
+                  }
+              } else {
+                  echo "<option value=''>No courses found</option>";
+              }
+              ?>
+            </select>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -287,6 +308,7 @@ $(document).ready(function(){
     var email = $(this).data('email');
     var student_id = $(this).data('student_id');
     var phone = $(this).data('phone');
+    var course = $(this).data('course');
     
     $('#editId').val(id);
     $('#editName').val(name);
@@ -294,6 +316,7 @@ $(document).ready(function(){
     $('#editEmail').val(email);
     $('#editPhone').val(phone);
     $('#editStudent_id').val(student_id);
+    $('#editCourse').val(course);
   });
 });
 </script>
