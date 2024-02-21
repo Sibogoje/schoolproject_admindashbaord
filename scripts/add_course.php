@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Prepare an INSERT statement
-    $query = "INSERT INTO courses (name, year, department, classroom) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO courses (`name`, `year`, `department`, `classroom`) VALUES (?, ?, ?, ?)";
 
     if($stmt = $conn->prepare($query)) {
         // Bind variables to the prepared statement as parameters
