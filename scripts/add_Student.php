@@ -11,13 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $StudentSurname = $conn->real_escape_string(trim($_POST['studentSurname']));
     $StudentEmail = $conn->real_escape_string(trim($_POST['studentEmail']));
     $StudentPhone = $conn->real_escape_string(trim($_POST['studentPhone']));
+    $StudentCourse = $conn->real_escape_string(trim($_POST['course']));
 
     // Prepare an INSERT statement
-    $query = "INSERT INTO students (student_id, name, surname, phone, email) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO students (student_id, name, surname, phone, email, course) VALUES (?, ?, ?, ?, ?, ?)";
 
     if($stmt = $conn->prepare($query)) {
         // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("issss", $Student_No, $StudentName, $StudentSurname, $StudentPhone, $StudentEmail);
+        $stmt->bind_param("isssss", $Student_No, $StudentName, $StudentSurname, $StudentPhone, $StudentEmail, $StudentCourse);
 
         // Attempt to execute the prepared statement
         if($stmt->execute()) {

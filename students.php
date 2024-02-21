@@ -200,6 +200,27 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             <label for="studentPhone">Phone</label>
             <input type="text" class="form-control" id="studentPhone" name="studentPhone" required>
           </div>
+
+          <!-- add select for courses -->
+          <div class="form-group">
+            <label for="course">Course</label>
+            <select class="form-control" id="course" name="course" required>
+              <option value="">Select Course</option>
+              <?php
+              // Fetch courses from the database
+              $sql = "SELECT * FROM courses"; // Adjust 'courses' according to your actual table name
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                      echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['name']) . "</option>";
+                  }
+              } else {
+                  echo "<option value=''>No courses found</option>";
+              }
+              ?>
+            </select>
+          </div>
           
         </form>
       </div>

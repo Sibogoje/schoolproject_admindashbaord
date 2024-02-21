@@ -54,7 +54,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
-                <input type="text" style="background: white;" class="form-control" placeholder="Search Geo_fence..." id="searchInput">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search Subject..." id="searchInput">
             </div>
         </div>
     </div>
@@ -74,10 +74,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Subject</th>
-            <th scope="col">A</th>
-            <th scope="col">B</th>
-            <th scope="col">C</th>
-            <th scope="col">D</th>
+            <th scope="col">T. Students</th>
+            <th scope="col">T. Classes</th>
+            <th scope="col">% Attendance</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -103,7 +102,6 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['A']) . "</td>";
         echo "<td>" . htmlspecialchars($row['B']) . "</td>";
         echo "<td>" . htmlspecialchars($row['C']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['D']) . "</td>";
         echo "<td>";
         // Ensure data attributes are correct for the edit button
         echo "<button class='btn btn-success btn-sm editBtn' 
