@@ -56,7 +56,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <div class="row"> <!-- Wrap the input group in a row for proper alignment -->
         <div class="col-lg-12"> <!-- Adjust the column size as needed -->
             <div class="input-group">
-                <input type="text" style="background: white;" class="form-control" placeholder="Search Class..." id="searchInput">
+                <input type="text" style="background: white;" class="form-control" placeholder="Search Course..." id="searchInput">
             </div>
         </div>
     </div>
@@ -86,13 +86,18 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
   <?php
-// Adjust your query
+// Adjust your query to join the department and classroom tables
 $query = "SELECT 
-name, department, classroom, id
+            courses.id, 
+            courses.name, 
+            department.name AS department_name, 
+            classroom.name AS classroom_name
           FROM 
-            courses 
+            courses
+          INNER JOIN department ON courses.department = department.id
+          INNER JOIN classroom ON courses.classroom = classroom.id
           ORDER BY 
-            name ASC";
+            courses.name ASC";
 
 $result = $conn->query($query);
 
@@ -101,24 +106,25 @@ if ($result->num_rows > 0) {
         echo "<tr>";
         echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
         echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['department']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['classroom']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['department_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['classroom_name']) . "</td>";
         echo "<td>";
         // Modify button attributes as needed
         echo "<button class='btn btn-success btn-sm editBtn' 
         data-id='" . $row['id'] . "' 
         data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "'
-        data-department='" . htmlspecialchars($row['department'], ENT_QUOTES) . "'
-        data-classroom='" . htmlspecialchars($row['classroom'], ENT_QUOTES) . "'
+        data-department='" . htmlspecialchars($row['department_name'], ENT_QUOTES) . "'
+        data-classroom='" . htmlspecialchars($row['classroom_name'], ENT_QUOTES) . "'
         data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
         echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
         echo "</td>";
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='5'>No class found</td></tr>";
+    echo "<tr><td colspan='5'>No Course found</td></tr>";
 }
 ?>
+
 
 </tbody>
 
