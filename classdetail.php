@@ -2,6 +2,7 @@
 session_start();
 require_once 'encryption.php';
 require_once 'config.php';
+$course_id = isset($_GET['id']) ? decrypt($_GET['id']) : null;
 // Check if the user is logged in, using a session variable (e.g., $_SESSION['loggedin'])
 // This assumes you set this session variable at login
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
@@ -87,32 +88,35 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 // Assuming $conn is your database connection
 
 // Adjust the SQL query to join with the classes table to get the class name
-$sql = "SELECT geo_fence.id, geo_fence.class, classroom.name, geo_fence.A, geo_fence.B, geo_fence.C, geo_fence.D 
-FROM `u747325399_project`.`geo_fence`
-JOIN `u747325399_project`.`classroom` ON geo_fence.class = classroom.id";
+$sql = "SELECT 
+            c.name, 
+            COUNT(DISTINCT a.student_id) AS total_students,
+            COUNT(DISTINCT CONCAT(a.class_id, '_', a.date)) AS total_classes_occurred, 
+            (COUNT(CASE WHEN a.status = 'Present' THEN 1 END) / (COUNT(DISTINCT a.student_id) * COUNT(DISTINCT CONCAT(a.class_id, '_', a.date)))) * 100 AS attendance_percentage
+        FROM 
+            Attendance a
+        JOIN 
+            courses c ON a.course = c.id
+        WHERE 
+            a.course = '$course_id'
+        GROUP BY 
+            a.course;";
 
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<th scope='row'>" . htmlspecialchars($row['id']) . "</th>";
-        // Display the class name instead of class ID
-        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['A']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['B']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['C']) . "</td>";
-        echo "<td>";
+        echo "<th scope='row'>" . htmlspecialchars($row['course_name']) . "</th>";
+        echo "<td>" . htmlspecialchars($row['total_students']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['total_classes_occurred']) . "</td>";
+        echo "<td>" . htmlspecialchars(number_format($row['attendance_percentage'], 2)) . "%</td>";
+        echo "</tr>";
         // Ensure data attributes are correct for the edit button
         echo "<button class='btn btn-success btn-sm editBtn' 
-        data-id='" . $row['id'] . "' 
-        data-classid='" . htmlspecialchars($row['class'], ENT_QUOTES) . "'
-        data-a='" . htmlspecialchars($row['A'], ENT_QUOTES) . "'
-        data-b='" . htmlspecialchars($row['B'], ENT_QUOTES) . "'
-        data-c='" . htmlspecialchars($row['C'], ENT_QUOTES) . "'
-        data-d='" . htmlspecialchars($row['D'], ENT_QUOTES) . "'
+       
         data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
-        echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
+        echo "<button class='btn btn-danger btn-sm deleteBtn' > <i class='material-icons'>delete</i></button>";
         echo "</td>";
         echo "</tr>";
     }
