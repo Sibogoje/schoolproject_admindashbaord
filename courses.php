@@ -90,6 +90,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 $query = "SELECT 
             courses.id, 
             courses.name, 
+            courses.year,
+            courses.department,
+            courses.classroom,
             department.name AS department_name, 
             classroom.name AS classroom_name
           FROM 
