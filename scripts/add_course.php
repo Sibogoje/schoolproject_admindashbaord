@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($stmt = $conn->prepare($query)) {
         // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("ssss", $className, $year, $department, $classroom);
+        $stmt->bind_param("ssss", $name, $year, $department, $classroom);
 
         // Attempt to execute the prepared statement
         if($stmt->execute()) {
