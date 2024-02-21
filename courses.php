@@ -115,6 +115,7 @@ if ($result->num_rows > 0) {
         data-name='" . htmlspecialchars($row['name'], ENT_QUOTES) . "'
         data-department='" . htmlspecialchars($row['department'], ENT_QUOTES) . "'
         data-classroom='" . htmlspecialchars($row['classroom'], ENT_QUOTES) . "'
+        data-year='" . htmlspecialchars($row['year'], ENT_QUOTES) . "'
         data-toggle='modal' data-target='#editClassModal'> <i class='material-icons'>edit</i></button> ";
         echo "<button class='btn btn-danger btn-sm deleteBtn' data-id='" . $row['id'] . "'> <i class='material-icons'>delete</i></button>";
         echo "</td>";
